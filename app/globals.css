@@ -62,7 +62,9 @@
   --color-error-200: rgb(244 200 200);
   --color-error-100: rgb(255 240 240);
 
-  --shadow-link: 0px 2px 0px 0px #FF6636 inset
+  --shadow-link: 0px 2px 0px 0px #FF6636 inset;
+  --shadow-nav: 0px -1px 0px 0px #E9EAF0 inset;
+
 }
 
 
@@ -230,6 +232,7 @@
   }
 
 }
+
 @layer components {
   .link {
     @apply flex justify-center items-center p-4 h-13 font-medium text-gray-500 hover:text-white text-sm leading-5 transition duration-300 ease-in-out;
@@ -239,6 +242,7 @@
     @apply shadow-link text-white;
   }
 }
+
 :root {}
 
 @layer base {

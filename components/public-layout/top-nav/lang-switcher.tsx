@@ -12,11 +12,11 @@ export function LangSwitcher() {
     return (
         <Menubar className="p-0 border-0 outline-0 text-gray-400" >
             <MenubarMenu  >
-                <MenubarTrigger className="flex items-center gap-1.5 cursor-pointer" >
+                <MenubarTrigger className="flex items-center gap-1.5 font-body-medium-400 cursor-pointer" >
                     <span>English</span>
-                    <ChevronDown className="opacity-50 w-3 h-3" />
+                    <ChevronDown size={12} />
                 </MenubarTrigger>
-                <MenubarContent className="bg-gray-500 p-0 border-0 rounded-sm outline-0 text-white">
+                <MenubarContent className="bg-gray-800 p-0 border-0 rounded-sm outline-0 text-white">
                     <MenubarGroup>
                         <MenubarItem className="hover:bg-gray-900 cursor-pointer">
                             العربية
