@@ -1,0 +1,62 @@
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
+
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "flex items-center text-nowrap cursor-pointer justify-center gap-x-[12px]",
+  {
+    variants: {
+      variant: {
+        "primary/primary": "bg-primary-500 text-white hover:shadow-primary hover:bg-primary-600 disabled:bg-primary-200",
+        outline:
+          "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+        ghost:
+          "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
+        destructive:
+          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        sm: "h-[40px] w-[79px] px-[16px] font-button-sm",
+        md: "h-[48px] w-[126px] px-[24px] font-button-md",
+        lg: "h-[56px] w-[129px] px-[32px] font-button-lg",
+        icon: "h-[48px] w-[126px] px-[24px] font-button-md",
+        "icon-left": "h-[48px] w-[160px] px-[24px] font-button-md",
+        "icon-right": "h-[48px] w-[161px] px-[24px] font-button-md",
+      },
+    },
+    defaultVariants: {
+      variant: "primary/primary",
+      size: "sm",
+    },
+  }
+)
+
+function Button({
+  className,
+  variant = "primary/primary",
+  size = "sm",
+  asChild = false,
+  ...props
+}: React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }) {
+  const Comp = asChild ? Slot.Root : "button"
+
+  return (
+    <Comp
+      data-slot="button"
+      data-variant={variant}
+      data-size={size}
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  )
+}
+
+export { Button, buttonVariants }
