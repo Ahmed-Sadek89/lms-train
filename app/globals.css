@@ -119,9 +119,13 @@
   }
 
   .font-button-md {
-    @apply font-semibold text-base capitalize;
-    line-height: 3.000;
-    letter-spacing: -0.0080em;
+    font-weight: 600;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 48px;
+    letter-spacing: -0.8%;
+    text-transform: capitalize;
+
   }
 
   .font-button-sm {
