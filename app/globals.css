@@ -200,8 +200,12 @@
   }
 
   .font-body-medium-500 {
-    @apply font-medium text-sm leading-5;
-    letter-spacing: -0.0100em;
+    font-weight: 500;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 20px;
+    letter-spacing: -1%;
+
   }
 
   .font-body-medium-600 {

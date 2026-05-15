@@ -1,6 +1,6 @@
-import Topnav from './topnav'
-import FirstNav from './first-nav'
-import ThirdInfo from './third-info'
+import Topnav from './components/topnav'
+import FirstNav from './components/first-nav'
+import ThirdInfo from './components/third-info'
 
 const PublicHeader = () => {
     return (
