@@ -1,10 +1,14 @@
-import React from 'react'
+import Topnav from './topnav'
+import FirstNav from './first-nav'
+import ThirdInfo from './third-info'
 
 const PublicHeader = () => {
     return (
-        <div>
-            PublicHeader
-        </div>
+        <header>
+            <Topnav />
+            <FirstNav />
+            <ThirdInfo />
+        </header>
     )
 }
 
