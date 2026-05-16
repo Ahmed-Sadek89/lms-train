@@ -1,5 +1,5 @@
 "use client"
-import { currencies, languages, navItems } from '../utils/fixed-data'
+import { currencies, languages, navItems } from '../../utils/fixed-data'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
