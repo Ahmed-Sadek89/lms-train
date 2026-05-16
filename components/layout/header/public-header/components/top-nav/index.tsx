@@ -18,7 +18,7 @@ const Topnav = () => {
                                 className={
                                     cn(
                                         'bg-gray-900 text-gray-500 p-4 hover:text-white font-body-medium-500 transition duration-200',
-                                        item.link === pathname ? 'shadow-[inset_0px_2px_0px_0px_#FF6636]' : ''
+                                        item.link === pathname ? 'shadow-topnav' : ''
                                     )
                                 }
                             >
