@@ -3,7 +3,7 @@ import FirstNav from './components/first-nav'
 
 const PublicHeader = () => {
     return (
-        <header>
+        <header className='contents'>
             <Topnav />
             <FirstNav />
         </header>
