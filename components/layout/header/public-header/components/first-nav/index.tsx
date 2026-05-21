@@ -2,9 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CategoryDropdown } from './category-dropdown'
 import SearchInput from './search-input'
+import NotAuthSection from './not-auth-section'
+import AuthSection from './auth-section'
 
 const FirstNav = () => {
-
+    const isAuth = true
     return (
         <nav className='flex items-center justify-center w-full px-8 py-6 bg-white shadow-nav'>
             <section className='flex items-center justify-between w-full'>
@@ -17,7 +19,7 @@ const FirstNav = () => {
                         <SearchInput />
                     </div>
                 </div>
-                <div>right</div>
+                {isAuth ? <AuthSection /> : <NotAuthSection />}
             </section>
         </nav>
     )

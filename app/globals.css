@@ -62,7 +62,7 @@
   --color-error-200: rgb(244 200 200);
   --color-error-100: rgb(255 240 240);
 
-  --shadow-topnav:inset 0px 2px 0px 0px #FF6636;
+  --shadow-topnav: inset 0px 2px 0px 0px #FF6636;
   --shadow-link: 0px 2px 0px 0px #FF6636 inset;
   --shadow-nav: 0px -1px 0px 0px #E9EAF0 inset;
   --shadow-primary: 0px 6px 20px 0px #CC522B80;
@@ -232,8 +232,11 @@
   }
 
   .font-body-tiny-500 {
-    @apply font-medium leading-3;
+    font-weight: 500;
     font-size: 10px;
+    line-height: 10px;
+    letter-spacing: 0%;
+    text-align: center;
   }
 
   .font-body-tiny-600 {
