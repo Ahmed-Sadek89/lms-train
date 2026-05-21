@@ -19,7 +19,7 @@ const BadgeIcon = ({
                         cn(
                             'bg-primary-500 ',
                             number ?
-                                "group-data-[size=default]/avatar:size-4 font-body-tiny-500 text-white p-0.75 ring-0 -top-0.5 flex items-center justify-center left-4.5"
+                                "group-data-[size=default]/avatar:size-6 font-body-tiny-500 text-white p-0.75 ring-0 -top-2 flex items-center justify-center left-4.5"
                                 : "group-data-[size=default]/avatar:size-2 top-1.25 left-4.5 ring-white ring"
                         )
                     }
