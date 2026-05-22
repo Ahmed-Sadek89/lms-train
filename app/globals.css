@@ -261,6 +261,10 @@
   .link-active {
     @apply shadow-link text-white;
   }
+
+  .app-container {
+    @apply py-[80px] px-[300px]
+  }
 }
 
 :root {}

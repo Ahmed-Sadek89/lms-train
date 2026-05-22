@@ -6,8 +6,8 @@ import { ArrowRight } from 'lucide-react'
 
 const TopCategories = () => {
     return (
-        <section className='bg-white py-[80px] px-[300px] flex items-center justify-center w-full'>
-            <div className='flex flex-col gap-[40px] items-center'>
+        <section className='bg-white w-full'>
+            <div className='flex flex-col gap-[40px] items-center app-container'>
                 <h2 className='font-heading-2 text-gray-900'>Browse top category</h2>
                 <div className='grid grid-cols-4 items-start gap-[24px]'>
                     {
