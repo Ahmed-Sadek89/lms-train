@@ -21,6 +21,7 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        "link-primary-500": "text-primary-500 underline-offset-4 hover:underline",
       },
       size: {
         sm: "min-h-[40px] min-w-[79px] px-[16px] font-button-sm",
