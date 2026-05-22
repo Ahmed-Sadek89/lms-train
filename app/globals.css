@@ -73,7 +73,8 @@
   --shadow-dropdown: 0px 6px 16px 0px #0000000F;
   --shadow-primary-500: 0px 6px 20px 0px #CC522B80;
   --shadow-category-card: 0px 12px 32px 0px #1D20261A;
-  --shadow-course-details-card: 0px 4px 20px 0px #1D20261F
+  --shadow-course-details-card: 0px 4px 20px 0px #1D20261F;
+
 }
 
 .details {

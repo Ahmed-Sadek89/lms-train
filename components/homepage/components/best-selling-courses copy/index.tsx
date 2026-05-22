@@ -1,4 +1,5 @@
 import CourseCard from '@/components/ui/course-card'
+import React from 'react'
 
 const BestSellingCourses = () => {
     return (
