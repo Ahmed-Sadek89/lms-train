@@ -60,8 +60,7 @@ export default function CourseCard() {
                     </CardFooter>
                 </Card>
             </Link>
-
-            <div className="absolute -right-1/3 top-1/3 z-30 opacity-0 invisible translate-x-5 scale-95 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 group-hover:scale-100">
+            <div className="absolute hidden left-[192px] -top-[139px] z-30 opacity-0 invisible scale-95 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:block group-hover:scale-100">
                 <CourseDetails />
             </div>
         </div>
