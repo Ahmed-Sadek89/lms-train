@@ -140,23 +140,23 @@
     @apply font-semibold text-sm capitalize leading-10 tracking-normal;
   }
 
-  .font-labal-xxl {
+  .font-label-xxl {
     @apply font-medium text-lg uppercase leading-4;
   }
 
-  .font-labal-xl {
+  .font-label-xl {
     @apply font-medium text-base uppercase leading-4;
   }
 
-  .font-labal-large {
+  .font-label-large {
     @apply font-medium text-sm uppercase leading-3;
   }
 
-  .font-labal-medium {
+  .font-label-medium {
     @apply font-medium text-xs uppercase leading-3;
   }
 
-  .font-labal-small {
+  .font-label-small {
     @apply font-medium uppercase leading-3;
     font-size: 10px;
   }
