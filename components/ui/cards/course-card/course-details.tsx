@@ -1,7 +1,7 @@
 import Image from "next/image"
-import { Badge } from "../badge"
+import { Badge } from "../../badge"
 import { BarChart, Check, Clock, Heart, ShoppingBag, Star, User } from "lucide-react"
-import { Button } from "../button"
+import { Button } from "../../button"
 
 const CourseDetails = () => {
     return (

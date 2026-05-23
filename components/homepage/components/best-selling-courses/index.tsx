@@ -1,4 +1,4 @@
-import CourseCard from '@/components/ui/course-card'
+import CourseCard from '@/components/ui/cards/course-card'
 
 const BestSellingCourses = () => {
     return (

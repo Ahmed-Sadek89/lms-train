@@ -1,4 +1,4 @@
-import CourseCardDefault from "@/components/ui/course-card-default"
+import CourseCardDefault from "@/components/ui/cards/course-card-default"
 
 const FeaturedCourses = () => {
     return (

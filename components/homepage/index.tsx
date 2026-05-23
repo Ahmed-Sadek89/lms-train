@@ -1,4 +1,5 @@
 import BestSellingCourses from './components/best-selling-courses'
+import Clients from './components/clients'
 import FeaturedCourses from './components/featured-courses'
 import HeroSection from './components/hero-section'
 import RecentlyAddedCourse from './components/recently-added-courses'
@@ -20,9 +21,7 @@ const HomepageWrapper = () => {
                 <Steps />
                 <TopInstructors />
             </div>
-            <section className='pt-[360px] bg-white app-container'>
-                clients
-            </section>
+            <Clients />
         </>
     )
 }

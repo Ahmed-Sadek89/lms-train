@@ -5,7 +5,7 @@ import {
     CardHeader,
 } from "@/components/ui/card";
 import Image from "next/image";
-import { Badge } from "../badge";
+import { Badge } from "../../badge";
 import { Star } from "lucide-react";
 import Link from "next/link";
 import CourseDetails from "./course-details";
