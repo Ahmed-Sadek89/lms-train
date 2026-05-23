@@ -1,9 +1,16 @@
-import React from 'react'
+import Link from 'next/link'
+import { LangDropdown } from './lang-dropdown'
 
 const Copyright = () => {
     return (
-        <section>
-            Copyright
+        <section className='app-container py-[24px]'>
+            <div className='flex w-full items-center justify-between'>
+                <p className='text-gray-500 font-body-medium-400'>
+                    © {new Date().getFullYear()} - Developed by <Link className='text-white' href={"https://ahmed-sadek89.github.io/s-a-d-e-k/"} target='_blank'>SADEK</Link>.  All rights reserved
+                </p>
+                <LangDropdown />
+            </div>
+            
         </section>
     )
 }
