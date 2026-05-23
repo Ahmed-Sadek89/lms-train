@@ -17,7 +17,7 @@ export default function CourseCard() {
                 href="/courses/course-slug"
                 className="block transition-all duration-300 group-hover:-translate-y-1"
             >
-                <Card className="relative w-full rounded-none ring-0 bg-white overflow-hidden transition-all duration-300 group-hover:shadow-2xl">
+                <Card className="relative w-full rounded-none ring-0 bg-white overflow-hidden transition-all duration-300 group-hover:shadow-2xl border border-gray-100">
                     <Image
                         src="/images/course-image.png"
                         alt="course-card"
