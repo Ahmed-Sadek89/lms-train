@@ -21,7 +21,7 @@ export function CategoryDropdown() {
         <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger
                 className={cn(
-                    "w-50 h-12  p-5 cursor-pointer border focus:outline-0 flex items-center justify-between font-body-large-400",
+                    "w-50 h-12  p-5 cursor-pointer border focus:outline-0 hidden md:flex items-center justify-between font-body-large-400",
                     open ? "border-gray-200 text-gray-900" : "border-gray-100 text-gray-700"
                 )}
             >

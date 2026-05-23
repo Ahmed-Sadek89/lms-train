@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input'
 const SearchInput = () => {
     const id = useId()
     return (
-        <div className='w-full max-w-[424px] space-y-2'>
+        <div className='w-full max-w-[424px] space-y-2 hidden md:block'>
             <div className='relative'>
                 <div className='  pointer-events-none absolute inset-y-0 left-0 flex items-center gap-5.25 justify-center pl-3 peer-disabled:opacity-50'>
                     <Search className='text-gray-900' size={20} />

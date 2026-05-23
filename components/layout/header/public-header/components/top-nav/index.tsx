@@ -9,7 +9,7 @@ const Topnav = () => {
     const pathname = usePathname()
 
     return (
-        <section className='bg-gray-900 px-8 flex items-center justify-between'>
+        <section className='bg-gray-900 px-8 items-center hidden md:flex justify-between'>
             <div className='flex items-center gap-2'>
                 {
                     navItems.map((item, index) => {

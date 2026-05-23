@@ -5,13 +5,14 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "flex items-center text-nowrap cursor-pointer justify-center gap-x-[12px] disabled:cursor-not-allowed transition duration-300",
+  "flex items-center text-center text-nowrap cursor-pointer justify-center gap-x-[12px] disabled:cursor-not-allowed transition duration-300",
   {
     variants: {
       variant: {
         "primary/primary": "bg-primary-500 text-white hover:shadow-primary hover:bg-primary-600 disabled:bg-primary-200",
         "primary-100": "bg-primary-100 text-primary-500 hover:bg-primary-200 hover:text-primary-600 disabled:text-primary-300",
         "primary-500": "bg-primary-500 text-white hover:bg-primary-600  hover:shadow-primary-500 disabled:text-primary-200",
+        "error-500": "bg-error-500 text-white hover:bg-error-600   disabled:text-error-200",
         "gray-900": "bg-gray-900 text-white hover:bg-gray-800  hover:shadow-gray-900 disabled:bg-gray-200",
         "gray-50": "bg-gray-50 text-gray-900 hover:bg-gray-100 hover:text-gray-300 disabled:bg-gray-50 disabled:text-gray-300",
         "white-5": "bg-white/5 text-white hover:bg-gray-100 hover:text-gray-900 disabled:bg-gray-50 disabled:text-gray-300",
