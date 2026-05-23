@@ -65,7 +65,9 @@
   --background-image-hero-section: linear-gradient(180deg,
       rgba(240, 242, 245, 0) 0.02%,
       #F0F2F5 220.8%);
-
+  --background-image-instructor-section: linear-gradient(90deg, #CC522B 0%, #FF6636 100%);
+  
+  --shadow-button-white: 0px 6px 16px 0px #00000003;
   --shadow-topnav: inset 0px 2px 0px 0px #FF6636;
   --shadow-link: 0px 2px 0px 0px #FF6636 inset;
   --shadow-nav: 0px -1px 0px 0px #E9EAF0 inset;
