@@ -1,4 +1,4 @@
-import React from 'react'
+import ClientCard from '@/components/ui/cards/client-card'
 
 const Clients = () => {
     return (
@@ -10,8 +10,14 @@ const Clients = () => {
                         Nullam egestas tellus at enim ornare tristique. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
                     </p>
                 </div>
-                <div className='col-span-2 p-2'>start content card ...</div>
-            </div> 
+                <div className='col-span-2 p-2 grid grid-cols-4 gap-[24px]  '>
+                    {
+                        Array(8).fill(0).map((_, index) => (
+                            <ClientCard key={index} />
+                        ))
+                    }
+                </div>
+            </div>
         </section>
     )
 }

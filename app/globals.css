@@ -66,7 +66,7 @@
       rgba(240, 242, 245, 0) 0.02%,
       #F0F2F5 220.8%);
   --background-image-instructor-section: linear-gradient(90deg, #CC522B 0%, #FF6636 100%);
-  
+
   --shadow-button-white: 0px 6px 16px 0px #00000003;
   --shadow-topnav: inset 0px 2px 0px 0px #FF6636;
   --shadow-link: 0px 2px 0px 0px #FF6636 inset;
@@ -76,6 +76,8 @@
   --shadow-primary-500: 0px 6px 20px 0px #CC522B80;
   --shadow-category-card: 0px 12px 32px 0px #1D20261A;
   --shadow-course-details-card: 0px 4px 20px 0px #1D20261F;
+  --shadow-client-card: 0px 0px 32px 0px #091A4412;
+
 
 }
 
