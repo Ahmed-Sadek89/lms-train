@@ -9,7 +9,10 @@ const layout = ({ children }: { children: React.ReactNode }) => {
             <main className='min-h-screen'>
                 {children}
             </main>
-            <PublicFooter />
+            <PublicFooter
+                showStats={true}
+                showRegisterOffer={true}
+            />
         </>
     )
 }
