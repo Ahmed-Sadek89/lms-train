@@ -1,7 +1,7 @@
-import Copyright from "./copyright";
-import FooterLinks from "./footer-links";
-import RegisterOffer from "./register-offer";
-import Stats from "./stats";
+import Copyright from "./components/copyright";
+import FooterLinks from "./components/footer-links";
+import RegisterOffer from "./components/register-offer";
+import Stats from "./components/stats";
 
 interface IPublicFooter {
     showStats?: boolean;
@@ -13,13 +13,9 @@ const PublicFooter = ({
     showRegisterOffer = false
 }: IPublicFooter) => {
     return (
-        <footer className="flex flex-col gap-[80px] bg-gray-900">
-            {
-                showStats && <Stats />
-            }
-            {
-                showRegisterOffer && <RegisterOffer />
-            }
+        <footer className="flex flex-col  text-white bg-gray-900">
+            {showStats && <Stats />}
+            {showRegisterOffer && <RegisterOffer />}
             <FooterLinks />
             <Copyright />
         </footer>
