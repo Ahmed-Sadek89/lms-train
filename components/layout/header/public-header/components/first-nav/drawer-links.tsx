@@ -1,59 +1,52 @@
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
-    Drawer,
-    DrawerClose,
-    DrawerContent,
-    DrawerDescription,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerTitle,
-    DrawerTrigger,
-} from "@/components/ui/drawer"
-import { Menu } from "lucide-react"
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger
+} from '@/components/ui/sheet'
+import { Menu } from 'lucide-react'
 
-export function DrawerLinks({ isAuth }: { isAuth: boolean }) {
+const DrawerLinks = ({ isAuth }: { isAuth: boolean }) => {
     return (
-        <div className="lg:hidden block">
-            <Drawer
-                direction={"left"}
-            >
-                <DrawerTrigger asChild>
+        <div className='flex lg:hidden flex-wrap gap-2'>
+            <Sheet>
+                <SheetTrigger asChild>
                     <Button variant="outline" className="capitalize">
-                        <Menu size={24} className="flex md:hidden text-gray-900" />
+                        <Menu size={24} className="flex text-gray-900" />
                     </Button>
-                </DrawerTrigger>
-                <DrawerContent className="bg-gray-900 ">
-                    <DrawerHeader>
-                        <DrawerTitle>Move Goal</DrawerTitle>
-                        <DrawerDescription>
-                            Set your daily activity goal.
-                        </DrawerDescription>
-                    </DrawerHeader>
-                    <div className="no-scrollbar overflow-y-auto px-4">
-                        {Array.from({ length: 10 }).map((_, index) => (
-                            <p
-                                key={index}
-                                className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
-                            >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure dolor in reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </p>
-                        ))}
+                </SheetTrigger>
+                <SheetContent side='left' className='bg-white'>
+                    <SheetHeader>
+                        <SheetTitle>Edit profile</SheetTitle>
+                        <SheetDescription>Make changes to your profile here. Click save when you&apos;re done.</SheetDescription>
+                    </SheetHeader>
+                    <div className='grid flex-1 auto-rows-min gap-6 px-4'>
+                        <div className='grid gap-3'>
+                            <Label htmlFor='sheet-demo-name'>Name</Label>
+                            <Input id='sheet-demo-name' defaultValue='Pedro Duarte' />
+                        </div>
+                        <div className='grid gap-3'>
+                            <Label htmlFor='sheet-demo-username'>Username</Label>
+                            <Input id='sheet-demo-username' defaultValue='@peduarte' />
+                        </div>
                     </div>
-                    <DrawerFooter >
-                        <Button>Submit</Button>
-                        <DrawerClose asChild>
-                            <Button variant="outline">Cancel</Button>
-                        </DrawerClose>
-                    </DrawerFooter>
-                </DrawerContent>
-            </Drawer>
+                    <SheetFooter>
+                        <Button type='submit'>Save changes</Button>
+                        <SheetClose asChild>
+                            <Button variant='outline'>Close</Button>
+                        </SheetClose>
+                    </SheetFooter>
+                </SheetContent>
+            </Sheet>
         </div>
     )
 }
+
+export default DrawerLinks
