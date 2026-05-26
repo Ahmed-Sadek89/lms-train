@@ -4,7 +4,6 @@ import { CategoryDropdown } from "./category-dropdown"
 import SearchInput from "./search-input"
 import AuthSection from "./auth-section"
 import NotAuthSection from "./not-auth-section"
-import { Menu } from "lucide-react"
 import { DrawerLinks } from "./drawer-links"
 
 const FirstNav = () => {

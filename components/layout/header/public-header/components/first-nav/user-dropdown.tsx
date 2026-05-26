@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -8,6 +7,8 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { UserIcon, SettingsIcon, CreditCardIcon, BellIcon, LogOutIcon } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const listItems = [
     {
@@ -46,18 +47,18 @@ const UserDropdown = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Avatar>
-                    <AvatarImage src='https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png' alt='Hallie Richards' />
-                    <AvatarFallback className='text-xs'>HR</AvatarFallback>
-                </Avatar>
+                <Image src='/images/instructor.jpg' alt='user-auth' width={35} height={35}
+                    className='object-cover cursor-pointer rounded-full' />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className='w-56'>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuContent sideOffset={16} className='z-100 w-56 ring-0 rounded-none  bg-white'>
+                <DropdownMenuLabel className='font-label-small'>My Account</DropdownMenuLabel>
                 <DropdownMenuGroup>
                     {listItems.map((item, index) => (
-                        <DropdownMenuItem key={index} className='*:[svg]:text-muted-foreground'>
-                            {item.icon}
-                            <span className='text-popover-foreground'>{item.property}</span>
+                        <DropdownMenuItem asChild key={index} className='font-body-medium-500 text-gray-600 flex items-center rounded-none gap-3 transition duration-300 hover:bg-primary-100 cursor-pointer hover:text-primary-500'>
+                            <Link href={`index-${index}`}>
+                                {item.icon}
+                                <span className='  text-popover-foreground'>{item.property}</span>
+                            </Link>
                         </DropdownMenuItem>
                     ))}
                 </DropdownMenuGroup>

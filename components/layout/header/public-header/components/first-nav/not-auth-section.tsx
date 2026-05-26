@@ -1,13 +1,14 @@
 import { Button } from '@/components/ui/button'
-import { LogIn, Search, ShoppingCart, UserPlus } from 'lucide-react'
+import { LogIn, ShoppingCart, UserPlus } from 'lucide-react'
 import Link from 'next/link'
 import BadgeIcon from './badge-icon'
+import SearchPopover from './search-popover'
 
 const NotAuthSection = () => {
     return (
         <div className='flex items-center gap-6'>
             <div className='flex items-center gap-x-2'>
-                <Search size={24} className="block md:hidden text-gray-900" />
+                <SearchPopover />
                 <BadgeIcon number={10} Icon={ShoppingCart} />
             </div>
             <div className='hidden md:flex items-center gap-3'>
