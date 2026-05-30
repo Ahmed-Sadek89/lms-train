@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Input } from '@/components/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { SearchIcon, LoaderCircleIcon, Search } from 'lucide-react'
+import { SearchIcon, Search } from 'lucide-react'
 
 const users = [
   {
@@ -44,16 +44,22 @@ const useDebounce = (value: string, delay: number = 300) => {
 
 const SearchPopover = () => {
   const [inputValue, setInputValue] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
   const debouncedSearch = useDebounce(inputValue)
-  const [filteredUsers, setFilteredUsers] = useState(users)
+  const filteredUsers = useMemo(() => {
+    const normalizedSearch = debouncedSearch.trim().toLowerCase()
 
-  
+    return normalizedSearch
+      ? users.filter(user => user.name.toLowerCase().includes(normalizedSearch))
+      : users
+  }, [debouncedSearch])
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Search size={24} className="block md:hidden cursor-pointer text-gray-900" />
+      <PopoverTrigger
+        className="flex md:hidden cursor-pointer text-gray-900 outline-none"
+        aria-label="Open search"
+      >
+        <Search size={24} />
       </PopoverTrigger>
       <PopoverContent sideOffset={17} side='right' className='w-80 bg-white'>
         <div className='grid gap-4'>
@@ -69,12 +75,6 @@ const SearchPopover = () => {
               onChange={e => setInputValue(e.target.value)}
               className='peer px-9 [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-results-button]:appearance-none [&::-webkit-search-results-decoration]:appearance-none'
             />
-            {isLoading && (
-              <div className='text-muted-foreground pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-3 peer-disabled:opacity-50'>
-                <LoaderCircleIcon className='size-4 animate-spin' />
-                <span className='sr-only'>Loading...</span>
-              </div>
-            )}
           </div>
           <ul className='space-y-2'>
             {filteredUsers.length > 0 ? (

@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -13,12 +15,17 @@ import {
 } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
 
-const DrawerLinks = ({ isAuth }: { isAuth: boolean }) => {
+const DrawerLinks = () => {
     return (
         <div className='flex lg:hidden flex-wrap gap-2'>
             <Sheet>
                 <SheetTrigger asChild>
-                    <Button variant="outline" className="capitalize">
+                    <Button
+                        type="button"
+                        variant="outline"
+                        className="capitalize"
+                        aria-label="Open navigation menu"
+                    >
                         <Menu size={24} className="flex text-gray-900" />
                     </Button>
                 </SheetTrigger>
