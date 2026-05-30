@@ -12,7 +12,7 @@ const FirstNav = () => {
     return (
         <nav className='sticky top-0 z-50 flex items-center justify-center w-full px-8 py-6 bg-white shadow-nav'>
             <section className='flex items-center justify-between w-full'>
-                <DrawerLinks />
+                <DrawerLinks isAuth={isAuth} />
                 <div className='flex items-center gap-12.5'>
                     <Link href={'/'} className="hidden md:flex">
                         <Image
