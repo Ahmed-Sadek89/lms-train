@@ -17,7 +17,7 @@ const TopInstructors = () => {
                         ))
                     }
                 </div>
-                <div className='flex items-center gap-[8px] flex-col md:flex-row text-center'>
+                <div className='flex items-center lg:gap-[8px] flex-col lg:flex-row text-center'>
                     <span className='text-gray-600 text-body-medium-400'>
                         Thousands of students waiting for a instructor. Start teaching & earning now!.
                     </span>

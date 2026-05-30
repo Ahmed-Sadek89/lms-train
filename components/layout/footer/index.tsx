@@ -13,7 +13,7 @@ const PublicFooter = ({
     showRegisterOffer = false
 }: IPublicFooter) => {
     return (
-        <footer className="flex flex-col  overflow-x-hidden w-full text-white bg-gray-900">
+        <footer className="flex flex-col text-white bg-gray-900">
             {showStats && <Stats />}
             {showRegisterOffer && <RegisterOffer />}
             <FooterLinks />

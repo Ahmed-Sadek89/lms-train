@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react"
 const FooterLinks = () => {
     return (
         <section className='app-container border-b border-b-gray-50/10'>
-            <div className="grid grid-cols-5 items-start gap-[24px]">
+            <div className="grid  lg:grid-cols-5 items-start gap-[24px]">
                 <div className="col-span-2">
                     <div className="flex flex-col gap-y-[26px]">
                         <div className="flex flex-col gap-y-[20px]">
@@ -39,7 +39,7 @@ const FooterLinks = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-span-3 grid grid-cols-4 items-start gap-[20px]">
+                <div className="col-span-3 grid grid-cols-2 lg:grid-cols-4 items-start gap-[20px]">
                     {
                         footerLinks.map((item, index) => (
                             <div
