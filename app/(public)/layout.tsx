@@ -6,7 +6,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             <PublicHeader />
-            <main className='min-h-screen'>
+            <main className='min-h-screen overflow-x-hidden w-full'>
                 {children}
             </main>
             <PublicFooter

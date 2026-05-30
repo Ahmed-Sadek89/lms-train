@@ -77,7 +77,7 @@ const DrawerLinks = ({ isAuth }: { isAuth: boolean }) => {
                                     </div>
                                     <div className='space-y-2 text-center'>
                                         <h4 className='text-lg font-medium'>Matthew Johnson</h4>
-                                        <p>A-8486214</p>
+                                        <p>A-84862141</p>
                                         <Button asChild variant={'error-500'} size={"sm"} >
                                             <Link href={"/auth/logout"}>
                                                 <LogOut size={18} />

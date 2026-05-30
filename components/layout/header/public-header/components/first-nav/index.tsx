@@ -25,13 +25,12 @@ const FirstNav = () => {
                     </Link>
 
                     <div className='flex items-center w-full gap-4'>
-                        <Link href={'/'} className="flex md:hidden">
+                        <Link href={'/'} className="flex md:hidden items-center justify-center">
                             <Image
                                 src={"/logo.svg"}
                                 alt='logo'
                                 width={100}
                                 height={30}
-                                className="h-auto w-auto"
                             />
                         </Link>
                         <CategoryDropdown />
