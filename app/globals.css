@@ -347,7 +347,7 @@
   }
 
   .app-container {
-    @apply py-[80px] px-[300px]
+    @apply px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-16 lg:px-20 xl:px-[160px] 2xl:px-[300px] 2xl:py-[80px];
   }
 }
 

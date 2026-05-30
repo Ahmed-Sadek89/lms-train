@@ -59,7 +59,7 @@ const SearchPopover = () => {
         className="flex md:hidden cursor-pointer text-gray-900 outline-none"
         aria-label="Open search"
       >
-        <Search size={24} />
+        <Search size={18} />
       </PopoverTrigger>
       <PopoverContent sideOffset={17} side='right' className='w-80 bg-white'>
         <div className='grid gap-4'>

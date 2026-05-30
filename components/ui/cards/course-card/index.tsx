@@ -21,7 +21,7 @@ export default function CourseCard() {
                     <Image
                         src="/images/course-image.png"
                         alt="course-card"
-                        className="w-full object-cover rounded-none transition-transform duration-500 group-hover:scale-105"
+                        className=" w-full lg:h-full h-[250px] object-cover rounded-none transition-transform duration-500 group-hover:scale-105"
                         width={244}
                         height={183}
                     />
@@ -60,7 +60,7 @@ export default function CourseCard() {
                     </CardFooter>
                 </Card>
             </Link>
-            <div className="absolute hidden left-[192px] -top-[139px] z-30 opacity-0 invisible scale-95 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:block group-hover:scale-100">
+            <div className="absolute hidden left-[92px] -top-[139px] z-30 opacity-0 invisible scale-95 transition-all duration-300 group-hover:opacity-100 lg:group-hover:visible lg:group-hover:block group-hover:scale-100">
                 <CourseDetails />
             </div>
         </div>

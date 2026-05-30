@@ -48,13 +48,13 @@ const listItems = [
 const UserDropdown = () => {
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger className='flex size-[35px] items-center justify-center rounded-full outline-none'>
+            <DropdownMenuTrigger className='flex size-[30px] md:size-[35px] items-center justify-center rounded-full outline-none'>
                 <Image
                     src='/images/instructor.jpg'
                     alt='user-auth'
                     width={35}
                     height={35}
-                    className='size-[35px] object-cover cursor-pointer rounded-full'
+                    className='size-[30px] md:size-[35px] object-cover cursor-pointer rounded-full'
                 />
             </DropdownMenuTrigger>
             <DropdownMenuContent sideOffset={16} className='z-100 w-56 ring-0 rounded-none  bg-white'>

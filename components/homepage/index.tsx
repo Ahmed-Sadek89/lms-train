@@ -12,12 +12,12 @@ const HomepageWrapper = () => {
         <>
             <HeroSection />
             <TopCategories />
-            <div className="relative">
+            <div className="relative space-y-4 lg:space-y-0">
                 <BestSellingCourses />
                 <FeaturedCourses />
             </div>
             <RecentlyAddedCourse />
-            <div className="relative">
+            <div className="relative space-y-4 lg:space-y-0">
                 <Steps />
                 <TopInstructors />
             </div>

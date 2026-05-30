@@ -7,14 +7,14 @@ export default function CourseCardDefault() {
     return (
         <Link
             href={"/course/course-slug"}
-            className="flex items-center transition max-h-[160px] delay-300 group hover:shadow-category-card hover:scale-105 border border-gray-100 bg-white"
+            className="flex items-center flex-col lg:flex-row transition lg:max-h-[160px] duration-300 group hover:shadow-category-card hover:scale-105 border border-gray-100 bg-white"
         >
             <Image
                 src="/images/course-card-default.png"
                 alt="course card"
-                width={140}
-                height={140}
-                className="  h-full object-cover"
+                width={150}
+                height={300}
+                className="w-full lg:w-auto h-[250px]  lg:h-full object-cover"
             />
 
             <div className="flex flex-col py-[16px] flex-1  w-full gap-[10px]">

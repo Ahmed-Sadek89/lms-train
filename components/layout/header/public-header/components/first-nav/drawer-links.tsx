@@ -22,14 +22,7 @@ const DrawerLinks = ({ isAuth }: { isAuth: boolean }) => {
         <div className='flex lg:hidden flex-wrap gap-2'>
             <Sheet>
                 <SheetTrigger asChild>
-                    <Button
-                        type="button"
-                        variant="outline"
-                        className="capitalize"
-                        aria-label="Open navigation menu"
-                    >
-                        <Menu size={24} className="flex text-gray-900" />
-                    </Button>
+                    <Menu size={24} className="flex text-gray-900 w-full cursor-pointer"  />
                 </SheetTrigger>
                 <SheetContent side='left' className='bg-white data-[side=left]:sm:max-w-75 data-[side=right]:sm:max-w-75' showCloseButton={false} >
                     <SheetHeader className=' border-b border-b-gray-100'>

@@ -5,12 +5,12 @@ import Link from "next/link"
 const Steps = () => {
     return (
         <section className='bg-gray-50 w-full'>
-            <div className="app-container pb-[360px]">
-                <div className="w-full grid grid-cols-2 gap-[24px]">
+            <div className="app-container lg:pb-[360px]">
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-[24px]">
                     <div className="relative p-[40px] h-[270px] w-full bg-instructor-section ">
                         <div className="flex flex-col items-start gap-[12px]">
                             <h3 className="text-white font-heading-3">Become an instructor</h3>
-                            <p className="text-white w-[250px] font-body-medium-400">
+                            <p className="text-white lg:w-[250px] font-body-medium-400">
                                 Instructors from around the world teach millions of students on Udemy. We provide the tools and skills to teach what you love.
                             </p>
                             <Button asChild variant={"white"} size="md">
@@ -21,7 +21,7 @@ const Steps = () => {
                             </Button>
                         </div>
                         <div
-                            className="translate-y-0 absolute size-[200px] right-0  bottom-0 bg-[url('/images/instructor-stat.png')] bg-contain bg-no-repeat bg-center"
+                            className="hidden md:block translate-y-0 absolute size-[200px] right-0  bottom-0 bg-[url('/images/instructor-stat.png')] bg-contain bg-no-repeat bg-center"
                         />
                     </div>
                     <div className="h-[270px] w-full p-[40px] bg-white flex flex-col gap-[27px]">
