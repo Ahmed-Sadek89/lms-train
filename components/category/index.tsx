@@ -1,6 +1,5 @@
-import React from 'react'
 import BestSellingCourses from './components/best-selling-courses'
-import PopularTools from './popular-tools'
+import PopularTools from './components/popular-tools'
 
 const CategoryPageWrapper = () => {
     return (
