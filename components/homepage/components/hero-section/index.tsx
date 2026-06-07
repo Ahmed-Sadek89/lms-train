@@ -25,6 +25,7 @@ const HeroSection = () => {
                         alt="Hero Background"
                         width={900}
                         height={548}
+                        loading="eager"
                         className="object-cover w-full h-full lg:[clip-path:polygon(16%_0,100%_0%,100%_100%,0%_100%)]"
                     />
                 </div>
