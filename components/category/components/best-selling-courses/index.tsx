@@ -1,10 +1,9 @@
 import CourseCard from '@/components/ui/cards/course-card'
-import React from 'react'
 
 const BestSellingCourses = () => {
     return (
         <section className='bg-white'>
-            <div className="app-container">
+            <div className="app-container pt-[100px]">
                 <div className="flex flex-col items-center gap-6">
                     <h2 className='text-gray-900 font-heading-2 text-center'>
                         Best selling courses in Web Development
