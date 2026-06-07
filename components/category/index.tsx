@@ -1,3 +1,4 @@
+import PublicCoursesSelectionWrapper from '../ui/public-courses-selection-wrapper'
 import BestSellingCourses from './components/best-selling-courses'
 import PopularInstructor from './components/popular-instructor'
 import PopularKeyword from './components/popular-keyword'
@@ -10,7 +11,11 @@ const CategoryPageWrapper = () => {
             <PopularTools />
             <PopularKeyword />
             <PopularInstructor />
-
+            <PublicCoursesSelectionWrapper
+            // courses={[]}
+            // categories={[]}
+            // tools={[]}
+            />
         </>
     )
 }
