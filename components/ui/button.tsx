@@ -42,6 +42,7 @@ const buttonVariants = cva(
         "icon-left": "min-h-[48px] min-w-[160px] px-[24px] font-button-md",
         "icon-right": "min-h-[48px] min-w-[161px] px-[24px] font-button-md",
         "icon-carousel": "min-h-[0px] min-w-[0px] px-[0px] font-button-md",
+        "paginate-sm": "size-[48px] p-0",
       },
     },
     defaultVariants: {

@@ -96,7 +96,7 @@ const MainPagination = () => {
                         <PaginationLink
                             href={currentPage === 1 ? '#' : buildQueryHref(searchParams, 'page', '1')}
                             aria-label='Go to first page'
-                            size='icon'
+                            size='paginate-sm'
                             className='rounded-full disabled:opacity-50 '
                             disabled={currentPage === 1}
                         >
@@ -107,7 +107,7 @@ const MainPagination = () => {
                         <PaginationLink
                             href={currentPage === 1 ? '#' : buildQueryHref(searchParams, 'page', (currentPage - 1).toString())}
                             aria-label='Go to previous page'
-                            size='icon'
+                            size='paginate-sm'
                             className='rounded-full'
                             disabled={currentPage === 1}
                         >
@@ -120,7 +120,7 @@ const MainPagination = () => {
                         <PaginationLink
                             href={currentPage === TOTAL_PAGES ? '#' : buildQueryHref(searchParams, 'page', (currentPage + 1).toString())}
                             aria-label='Go to next page'
-                            size='icon'
+                            size='paginate-sm'
                             className='rounded-full'
                             disabled={currentPage === TOTAL_PAGES}
                         >
@@ -131,7 +131,7 @@ const MainPagination = () => {
                         <PaginationLink
                             href={currentPage === TOTAL_PAGES ? '#' : buildQueryHref(searchParams, 'page', TOTAL_PAGES.toString())}
                             aria-label='Go to last page'
-                            size='icon'
+                            size='paginate-sm'
                             className='rounded-full'
                             disabled={currentPage === TOTAL_PAGES}
                         >

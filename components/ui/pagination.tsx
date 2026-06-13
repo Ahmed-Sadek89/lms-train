@@ -23,7 +23,7 @@ function PaginationContent({
   return (
     <ul
       data-slot="pagination-content"
-      className={cn("flex items-center gap-0.5", className)}
+      className={cn("flex items-center gap-2", className)}
       {...props}
     />
   )
@@ -42,7 +42,7 @@ type PaginationLinkProps = {
 function PaginationLink({
   className,
   isActive,
-  size = "sm",
+  size = "paginate-sm",
   disabled,
   ...props
 }: PaginationLinkProps) {
