@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import CourseCard from "../cards/course-card"
 import MainSidebar from "./components/main-sidebar"
 import DrawerSidebar from "./components/drawer-sidebar"
+import MainPagination from "../main-pagination"
 
 const PublicCoursesSelectionWrapper = () => {
     const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -51,11 +52,11 @@ const PublicCoursesSelectionWrapper = () => {
                                                 <CourseCard key={index} />
                                             ))
                                         }
-                                    </div>
-                                    <div className='flex w-full justify-center items-center '>
-                                        <div>pagination</div>
-                                    </div>
+                                    </div> 
                                 </div>
+                            </div>
+                            <div className='flex w-full justify-center items-center '>
+                                <MainPagination />
                             </div>
                         </div>
                     </div>

@@ -25,43 +25,51 @@ const MainHeader = ({ handleOpenFilter }: { handleOpenFilter: () => void }) => {
         const combinedString = [categories, tools, price, rating, courseLevel, duration].filter(Boolean).join(',')
         return combinedString ? combinedString.split(',').length : 0
     }, [categories, tools, price, rating, courseLevel, duration])
-    console.log({ combinedFilters })
+
     return (
-        <div className='shadow-nav space-y-6 pb-4'>
-            <div className='flex items-center justify-between w-full flex-col md:flex-row'>
-                <div className='flex items-center gap-x-6 '>
+        <div className='shadow-nav space-y-4 pb-4 md:space-y-6'>
+            <div className='flex flex-col gap-4 md:flex-row md:items-center md:gap-6'>
+                <div className='flex w-full items-center justify-between gap-3 md:w-auto md:shrink-0'>
                     <Button
                         size="filter-md"
                         variant={"white-filter"}
-                        className='flex group items-center text-gray-900 gap-x-3 transition duration-300 hover:text-primary-500'
+                        className='flex shrink-0 group items-center text-gray-900 gap-x-3 transition duration-300 hover:text-primary-500'
                         onClick={handleOpenFilter}
                     >
                         <KanbanSquare size={16} className='text-gray-900 group-hover:text-primary-500' />
-                        <span className='hidden md:block'>filter</span>
+                        <span  >filter</span>
                         {
                             combinedFilters > 0 &&
                             <Badge variant={"primary-100"}>{combinedFilters}</Badge>
                         }
                     </Button>
-                    <SearchInput
-                        placeholder="UI/UX Design"
-                        extraStyles='hidden md:block max-w-[600px] '
-                    />
+                    <div className='flex items-center gap-2 md:hidden'>
+                        <span className='sr-only'>Sort by</span>
+                        <BaseDropDown
+                            label={sortBy || "Trending"}
+                            data={sortByData(searchParams)}
+                            extraStyles='w-[132px] sm:w-50'
+                        />
+                    </div>
                 </div>
-                <div className='flex items-center gap-x-6 '>
-                    <span className='text-gray-700 font-body-medium-400'> Sort by: </span>
+                <SearchInput
+                    placeholder="UI/UX Design"
+                    extraStyles='block w-full min-w-0 md:flex-1 md:max-w-[600px]'
+                />
+                <div className='hidden md:flex shrink-0 items-center gap-3 lg:gap-6'>
+                    <span className='font-body-medium-400 whitespace-nowrap text-gray-700'>Sort by:</span>
                     <BaseDropDown
                         label={sortBy || "Trending"}
                         data={sortByData(searchParams)}
                     />
                 </div>
             </div>
-            <div className='flex items-center justify-between w-full flex-col md:flex-row'>
-                <div className='flex items-start gap-3 flex-wrap lg:flex-nowrap'>
-                    <p className='font-body-medium-400 text-gray-900 text-nowrap'>
+            <div className='flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between lg:gap-6'>
+                <div className='flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start'>
+                    <p className='shrink-0 font-body-medium-400 text-gray-900'>
                         Suggestions:
                     </p>
-                    <div className='flex items-center gap-2 flex-wrap w-full'>
+                    <div className='flex min-w-0 flex-wrap items-center gap-2'>
                         {
                             suggestionsData.map((keyword) => (
                                 <KeywordChip
@@ -74,17 +82,22 @@ const MainHeader = ({ handleOpenFilter }: { handleOpenFilter: () => void }) => {
                         }
                     </div>
                 </div>
-                <div className='flex items-center gap-x-2'>
+                <div className='flex shrink-0 flex-col gap-2 sm:flex-row sm:items-center sm:gap-x-2'>
                     {
                         suggestion &&
-                        <p className='font-body-medium-600 space-x-1'>
-                            <span className='text-gray-900 '>3,145,684</span>
-                            <span className='text-gray-700'>results find for "{suggestion}"</span>
+                        <p className='font-body-medium-600 text-sm sm:text-base'>
+                            <span className='text-gray-900'>3,145,684</span>
+                            <span className='text-gray-700'> results find for "{suggestion}"</span>
                         </p>
                     }
                     {
                         searchParams.size > 0 &&
-                        <Button variant={"error-500"} size="sm" onClick={() => router.push(pathname)}>
+                        <Button
+                            variant={"error-500"}
+                            size="sm"
+                            className='w-fit'
+                            onClick={() => router.push(pathname)}
+                        >
                             <X size={16} />
                             Clear all
                         </Button>
