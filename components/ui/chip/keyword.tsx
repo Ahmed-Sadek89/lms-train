@@ -1,15 +1,17 @@
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 
 interface IKeywordChip {
     text: string,
     href?: string
+    extraStyles?: string
 }
 
-const KeywordChip = ({ text, href = "#" }: IKeywordChip) => {
+const KeywordChip = ({ text, href = "#", extraStyles = "" }: IKeywordChip) => {
     return (
         <Link
             href={href}
-            className='py-1 px-3 bg-gray-50 text-gray-900 transition duration-300 hover:bg-primary-500 hover:text-white '
+            className={cn(extraStyles)}
         >
             {text}
         </Link>

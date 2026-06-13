@@ -1,10 +1,12 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
-import { CategoryDropdown } from "./category-dropdown"
-import SearchInput from "./search-input"
 import AuthSection from "./auth-section"
 import NotAuthSection from "./not-auth-section"
 import DrawerLinks from "./drawer-links"
+import SearchInput from "@/components/ui/inputs/filters/search-input"
+import { BaseDropDown } from "@/components/ui/inputs/filters/dropdown"
+import { staticDropdown } from "../../utils/fixed-data"
 
 const FirstNav = () => {
     const isAuth = true
@@ -33,8 +35,14 @@ const FirstNav = () => {
                                 height={30}
                             />
                         </Link>
-                        <CategoryDropdown />
-                        <SearchInput />
+                        <BaseDropDown
+                            extraStyles="hidden md:flex"
+                            label="Browse"
+                            data={staticDropdown}
+                        />
+                        <SearchInput
+                            placeholder="What do you want learn..."
+                        />
                     </div>
                 </div>
 

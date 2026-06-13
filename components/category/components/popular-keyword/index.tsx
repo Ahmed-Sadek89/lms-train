@@ -15,6 +15,7 @@ const PopularKeyword = () => {
                                     key={index}
                                     text='Responsive Developments'
                                     href='#'
+                                    extraStyles='py-1 px-3 bg-gray-50 text-gray-900 transition duration-300 hover:bg-primary-500 hover:text-white '
                                 />
                             ))
                         }

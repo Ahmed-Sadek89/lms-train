@@ -15,6 +15,7 @@ const buttonVariants = cva(
         "error-500": "bg-error-500 text-white hover:bg-error-600   disabled:text-error-200",
         "gray-900": "bg-gray-900 text-white hover:bg-gray-800  hover:shadow-gray-900 disabled:bg-gray-200",
         "gray-50": "bg-gray-50 text-gray-900 hover:bg-gray-100 hover:text-gray-300 disabled:bg-gray-50 disabled:text-gray-300",
+        "white-filter": "bg-white border border-primary-200 hover:border-primary-500  disabled:bg-gray-50 disabled:text-gray-300",
         "white-5": "bg-white/5 text-white hover:bg-gray-100 hover:text-gray-900 disabled:bg-gray-50 disabled:text-gray-300",
         "white": "text-primary-500 bg-white hover:bg-primary-500 hover:text-white hover:shadow-button-white disabled:text-gray-200 ",
         outline:
@@ -34,6 +35,7 @@ const buttonVariants = cva(
       size: {
         sm: "min-h-[40px] min-w-[79px] px-[16px] font-button-sm",
         md: "min-h-[48px] min-w-[120px] px-[24px] font-button-md",
+        "filter-md": "min-h-[48px] min-w-[120px] px-[24px] font-button-md",
         lg: "min-h-[26px] min-w-[65px] lg:min-h-[56px] lg:min-w-[129px] px-[12px] lg:px-[32px] font-button-lg",
         icon: "min-h-[48px] min-w-[126px] px-[24px] font-button-md",
         "icon-size": "h-[46px] w-[46px] px-[14px] flex items-center justify-center",
