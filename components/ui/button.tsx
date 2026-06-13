@@ -35,7 +35,7 @@ const buttonVariants = cva(
       size: {
         sm: "min-h-[40px] min-w-[79px] px-[16px] font-button-sm",
         md: "min-h-[48px] min-w-[120px] px-[24px] font-button-md",
-        "filter-md": "min-h-[48px] min-w-[120px] px-[24px] font-button-md",
+        "filter-md": " px-[24px] font-button-md",
         lg: "min-h-[26px] min-w-[65px] lg:min-h-[56px] lg:min-w-[129px] px-[12px] lg:px-[32px] font-button-lg",
         icon: "min-h-[48px] min-w-[126px] px-[24px] font-button-md",
         "icon-size": "h-[46px] w-[46px] px-[14px] flex items-center justify-center",

@@ -7,14 +7,25 @@ import { sortByData, suggestionsData } from '../utils/fixed-data'
 import { buildQueryHref } from '@/utils/build-query-href'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import KeywordChip from '../../chip/keyword'
+import { useMemo } from 'react'
 
-const MainHeader = () => {
+const MainHeader = ({ handleOpenFilter }: { handleOpenFilter: () => void }) => {
     const router = useRouter()
     const searchParams = useSearchParams()
     const pathname = usePathname()
     const sortBy = searchParams.get('sort_by')
     const suggestion = searchParams.get('suggestion')
-
+    const categories = searchParams.get('categories')
+    const tools = searchParams.get('tools')
+    const price = searchParams.get('price')
+    const rating = searchParams.get('rating')
+    const courseLevel = searchParams.get('course_level')
+    const duration = searchParams.get('duration')
+    const combinedFilters = useMemo(() => {
+        const combinedString = [categories, tools, price, rating, courseLevel, duration].filter(Boolean).join(',')
+        return combinedString ? combinedString.split(',').length : 0
+    }, [categories, tools, price, rating, courseLevel, duration])
+    console.log({ combinedFilters })
     return (
         <div className='shadow-nav space-y-6 pb-4'>
             <div className='flex items-center justify-between w-full flex-col md:flex-row'>
@@ -22,11 +33,15 @@ const MainHeader = () => {
                     <Button
                         size="filter-md"
                         variant={"white-filter"}
-                        className='flex group items-center text-gray-900 gap-x-6 transition duration-300 hover:text-primary-500'
+                        className='flex group items-center text-gray-900 gap-x-3 transition duration-300 hover:text-primary-500'
+                        onClick={handleOpenFilter}
                     >
-                        <KanbanSquare />
+                        <KanbanSquare size={16} className='text-gray-900 group-hover:text-primary-500' />
                         <span className='hidden md:block'>filter</span>
-                        <Badge variant={"primary-100"}>3</Badge>
+                        {
+                            combinedFilters > 0 &&
+                            <Badge variant={"primary-100"}>{combinedFilters}</Badge>
+                        }
                     </Button>
                     <SearchInput
                         placeholder="UI/UX Design"
@@ -73,7 +88,7 @@ const MainHeader = () => {
                             <X size={16} />
                             Clear all
                         </Button>
-                    } 
+                    }
                 </div>
             </div>
         </div>

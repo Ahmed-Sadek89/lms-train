@@ -9,7 +9,7 @@ const PopularInstructor = () => {
                     <h2 className="text-gray-900 text-center font-heading-2 capitalize">
                         Popular instructor in Web Development
                     </h2>
-                    <div className="grid gap-[16px] grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+                    <div className="grid gap-[16px] grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5">
                         {
                             Array(5).fill(0).map((_, index) => (
                                 <InstructorCard key={index} />
