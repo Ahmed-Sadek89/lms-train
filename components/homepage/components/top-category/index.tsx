@@ -35,7 +35,7 @@ const TopCategories = () => {
                 <div className='flex items-center gap-[12px] flex-col md:flex-row justify-center w-full'>
                     <span className='text-gray-700'>We have more category & subcategory.</span>
                     <Button asChild size='sm' variant="link-primary-500">
-                        <Link href="/course" className="flex items-center gap-[8px]">
+                        <Link href="/category" className="flex items-center gap-[8px]">
                             Browse All <ArrowRight size={16} />
                         </Link>
                     </Button>
