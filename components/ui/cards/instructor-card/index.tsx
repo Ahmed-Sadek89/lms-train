@@ -20,6 +20,8 @@ const InstructorCard = () => {
                     className="object-cover"
                     width={244}
                     height={244}
+                    loading="eager"
+
                 />
 
                 <CardDescription className="flex flex-col items-center gap-[8px]">

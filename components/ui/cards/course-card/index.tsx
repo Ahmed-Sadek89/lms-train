@@ -24,6 +24,7 @@ export default function CourseCard() {
                         className=" w-full lg:h-full h-[250px] object-cover rounded-none transition-transform duration-500 group-hover:scale-105"
                         width={244}
                         height={183}
+                        loading="eager"
                     />
 
                     <CardHeader className="flex items-center justify-between w-full">

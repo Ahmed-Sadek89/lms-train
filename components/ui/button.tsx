@@ -15,9 +15,10 @@ const buttonVariants = cva(
         "error-500": "bg-error-500 text-white hover:bg-error-600   disabled:text-error-200",
         "gray-900": "bg-gray-900 text-white hover:bg-gray-800  hover:shadow-gray-900 disabled:bg-gray-200",
         "gray-50": "bg-gray-50 text-gray-900 hover:bg-gray-100 hover:text-gray-300 disabled:bg-gray-50 disabled:text-gray-300",
+        "share-gray-50": "bg-gray-50 text-gray-700 hover:bg-primary-100 hover:text-primary-500 disabled:bg-gray-50 disabled:text-gray-300",
         "white-filter": "bg-white border border-primary-200 hover:border-primary-500  disabled:bg-gray-50 disabled:text-gray-300",
         "white-5": "bg-white/5 text-white hover:bg-gray-100 hover:text-gray-900 disabled:bg-gray-50 disabled:text-gray-300",
-        "white": "text-primary-500 bg-white hover:bg-primary-500 hover:text-white hover:shadow-button-white disabled:text-gray-200 ",
+        "white": "text-gray-900 border border-gray-900 bg-white hover:bg-gray-900 hover:text-white hover:border-transparent",
         outline:
           "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:

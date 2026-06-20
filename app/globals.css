@@ -44,6 +44,7 @@
   --color-success-300: rgb(123 215 133);
   --color-success-200: rgb(195 229 198);
   --color-success-100: rgb(225 247 227);
+  --color-success-gradient: #E1F7E366;
   --color-warning-900: rgb(51 29 6);
   --color-warning-800: rgb(101 57 12);
   --color-warning-700: rgb(152 86 19);
@@ -351,7 +352,10 @@
   }
 }
 
-:root {}
+/* Enable smooth scrolling behavior everywhere */
+:root {
+  scroll-behavior: smooth;
+}
 
 @layer base {
   * {}
