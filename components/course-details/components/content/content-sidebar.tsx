@@ -35,10 +35,10 @@ const ContentSidebar = () => {
           </Button>
         </div>
         <div className=" grid grid-cols-2 items-center gap-x-[12px] w-full">
-          <Button size={"sm"} variant={"white"}>
+          <Button size={"sm"} variant={"white"} className='px-2'>
             Add to wishlist
           </Button>
-          <Button size={"sm"} variant={"white"} asChild>
+          <Button size={"sm"} variant={"white"} asChild className='px-2'>
             <Link href={`/courses/${params.slug}/gift`}>
               gift course
             </Link>

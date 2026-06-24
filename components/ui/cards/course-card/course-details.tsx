@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Badge } from "../../badge"
 import { BarChart, Check, Clock, Heart, ShoppingBag, Star, User } from "lucide-react"
 import { Button } from "../../button"
+import Link from "next/link"
 
 const CourseDetails = () => {
     return (
@@ -89,8 +90,12 @@ const CourseDetails = () => {
                         <ShoppingBag size={24} className="text-white" />
                         Add to cart
                     </Button>
-                    <Button size={"md"} variant={"primary-100"}>
-                        Course Detail
+                    <Button size={"md"} variant={"primary-100"} asChild>
+                        <Link
+                            href="/courses/course-slug"
+                        >
+                            Course Detail
+                        </Link>
                     </Button>
                 </div>
             </div>

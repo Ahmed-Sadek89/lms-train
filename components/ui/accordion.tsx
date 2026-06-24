@@ -48,8 +48,8 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <ChevronDownIcon data-slot="accordion-trigger-icon" size={24} className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden text-gray-900 " />
-        <ChevronUpIcon data-slot="accordion-trigger-icon" size={24} className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline text-gray-900 " />
+        <ChevronDownIcon data-slot="accordion-trigger-icon" size={24} className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden text-gray-900 group-aria-expanded/accordion-trigger:text-primary-500 " />
+        <ChevronUpIcon data-slot="accordion-trigger-icon" size={24} className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline text-gray-900 group-aria-expanded/accordion-trigger:text-primary-500 " />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )

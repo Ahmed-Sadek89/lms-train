@@ -1,6 +1,7 @@
-import AccordionMultilevelCourseContent from '@/components/ui/accordion/accordion-course-content'
-import { categoriesData } from '@/components/ui/public-courses-selection-wrapper/utils/fixed-data'
-import { Clock, Dot, Folder, PlayCircle } from 'lucide-react'
+import AccordionOneLevel from '@/components/ui/accordion/accordion-onelevel'
+import { Clock, Folder, PlayCircle } from 'lucide-react'
+import { curriculumData } from '../../utils/curriculum-data'
+import { Course } from '@/types/courses'
 
 const ContentCurriculum = () => {
   return (
@@ -22,9 +23,8 @@ const ContentCurriculum = () => {
           </div>
         </div>
       </div>
-      <AccordionMultilevelCourseContent 
-        contents={categoriesData}
-        title='ahmed sadke'
+      <AccordionOneLevel
+        items={curriculumData as Course[]}
       />
     </div>
   )

@@ -12,7 +12,7 @@ const TabsUnderline = ({ tabs }: { tabs: { value: string, name: string }[] }) =>
     }, [window?.location?.hash])
 
     return (
-        <div className='w-full max-w-xs overflow-auto'>
+        <div className='w-full overflow-auto'>
             <Tabs defaultValue={hash || tabs[0].value} className='gap-4 bg-white'>
                 <TabsList variant='line' className={cn('rounded-none border-b  border-b-gray-100 ')}>
                     {tabs.map(tab => (
