@@ -8,19 +8,19 @@ const AccordionLeftIconDemo = ({ items }: { items: Course[] }) => {
   const defaultOpen = items.length > 0 ? [`item-1`] : [];
   const params = useParams()
   const router = useRouter()
-  
+
   return (
     <Accordion
       type='multiple'
       defaultValue={defaultOpen}
-      className='w-full border  border-gray-100 bg-white [&>*>[data-slot="accordion-content"]]:px-0'
+      className='w-full border z-0  border-gray-100 bg-white [&>*>[data-slot="accordion-content"]]:px-0'
 
     >
       {items.map((item, index) => (
         <AccordionItem key={index} value={`item-${index + 1}`}
-          className=' bg-white border-b border-gray-100  p-[20px] '
+          className=' bg-white border-b z-0 border-gray-100  p-[20px] '
         >
-          <AccordionTrigger className='items-center justify-start gap-4 cursor-pointer **:data-[slot=accordion-trigger-icon]:order-first **:data-[slot=accordion-trigger-icon]:ml-0'>
+          <AccordionTrigger className='z-0 items-center justify-start gap-4 cursor-pointer **:data-[slot=accordion-trigger-icon]:order-first **:data-[slot=accordion-trigger-icon]:ml-0'>
             <div className={cn('flex items-center flex-wrap gap-y-2 justify-between w-full group-aria-expanded/accordion-trigger:text-primary-500')}>
               <p className='font-body-large-500'>{item.title}</p>
               <div className="gap-x-3 flex items-center ">

@@ -12,8 +12,8 @@ const TabsUnderline = ({ tabs }: { tabs: { value: string, name: string }[] }) =>
     }, [window?.location?.hash])
 
     return (
-        <div className='w-full overflow-auto'>
-            <Tabs defaultValue={hash || tabs[0].value} className='gap-4 bg-white'>
+        <div className='w-full z-50 overflow-auto'>
+            <Tabs defaultValue={hash || tabs[0].value} className='gap-4 bg-white z-100'>
                 <TabsList variant='line' className={cn('rounded-none border-b  border-b-gray-100 ')}>
                     {tabs.map(tab => (
                         <TabsTrigger

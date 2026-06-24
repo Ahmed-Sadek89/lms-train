@@ -14,7 +14,7 @@ const Content = () => {
         <div className="grid gap-8 lg:grid-cols-3 lg:items-start">
             <div className="min-h-[140vh] lg:col-span-2 space-y-[40px]">
                 <CourseMainImage />
-                <div className='sticky top-18 md:top-20 left-0'>
+                <div className='sticky top-18 md:top-20 left-0 z-100'>
                     <TabsUnderline tabs={tabs} />
                 </div>
                 <section id={tabs[0].value} className='space-y-[40px]'>

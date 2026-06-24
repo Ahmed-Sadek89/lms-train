@@ -1,4 +1,3 @@
-import React from 'react'
 import DetailsMainHeader from './components/details-main-header'
 import Content from './components/content'
 
