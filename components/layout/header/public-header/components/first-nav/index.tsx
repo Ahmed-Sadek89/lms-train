@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import Link from "next/link"
+import Link from 'next/link'
 import AuthSection from "./auth-section"
 import NotAuthSection from "./not-auth-section"
 import DrawerLinks from "./drawer-links"

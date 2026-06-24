@@ -35,6 +35,12 @@ interface IBaseDropDown {
 export function BaseDropDown({ extraStyles="", label, data = [] }: IBaseDropDown) {
     const [open, setOpen] = useState(false)
     const router = useRouter()
+
+    const handleNavigate = (href: string) => {
+        if (href === "#") return
+        router.push(href, href.startsWith("?") ? { scroll: false } : undefined)
+    }
+
     return (
         <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger
@@ -65,7 +71,7 @@ export function BaseDropDown({ extraStyles="", label, data = [] }: IBaseDropDown
                         if (!hasSubValues) {
                             return (
                                 <DropdownMenuItem
-                                    onClick={() => router.push(item.href || "#")}
+                                    onClick={() => handleNavigate(item.href || "#")}
                                     key={index}
                                     className="capitalize flex items-center gap-3 px-3 py-3 bg-white text-gray-600 cursor-pointer rounded-none font-body-md-400 transition duration-300 hover:bg-primary-100 hover:text-primary-500"
                                 >
@@ -90,7 +96,7 @@ export function BaseDropDown({ extraStyles="", label, data = [] }: IBaseDropDown
                                         {item.subValues?.map((elem) => (
                                             <DropdownMenuItem
                                                 key={elem.subValue}
-                                                onClick={() => router.push(elem.href || "#")}
+                                                onClick={() => handleNavigate(elem.href || "#")}
                                                 className="px-5 py-3 text-gray-600 transition duration-300 hover:text-primary-500 cursor-pointer"
                                             >
                                                 {elem.subValue}

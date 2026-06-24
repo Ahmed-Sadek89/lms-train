@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Badge } from "../../badge";
 import { BarChart, Clock, Star, User } from "lucide-react";
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function CourseCardDefault() {
     return (

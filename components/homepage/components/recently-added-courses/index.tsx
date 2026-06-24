@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import CourseCard from "@/components/ui/cards/course-card"
 import { ArrowRight } from "lucide-react"
-import Link from "next/link"
+import Link from 'next/link'
 
 const RecentlyAddedCourse = () => {
     return (

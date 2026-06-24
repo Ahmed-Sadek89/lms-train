@@ -5,7 +5,7 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { Star } from "lucide-react";
-import Link from "next/link";
+import Link from 'next/link';
 
 const InstructorCard = () => {
     return (

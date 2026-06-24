@@ -1,7 +1,6 @@
 import MainAvatarGroup from '@/components/ui/main-avatar/avatar-group'
 import MainBreadcrumb from '@/components/ui/main-breadcrumb'
-import { cn } from '@/lib/utils'
-import { Star } from 'lucide-react'
+import StarRating from '@/components/ui/stars-rating'
 
 const DetailsMainHeader = () => {
 
@@ -51,9 +50,7 @@ const DetailsMainHeader = () => {
                             </div>
                             <div className='flex items-center gap-x-[8px]'>
                                 <div className='flex items-center gap-x-1'>
-                                    {
-                                        [1, 2, 3, 4, 5].map((index) => <Star key={index} className={cn("text-primary-500 ", index < 4 ? "fill-primary-500" : "")} />)
-                                    }
+                                    <StarRating percentage={90} size={20} />
                                 </div>
                                 <p className='text-gray-600 font-body-medium-400'>
                                     <span className='font-body-large-500 text-gray-900 me-1'>5.0</span>

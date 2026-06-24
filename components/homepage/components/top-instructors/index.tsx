@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import InstructorCard from "@/components/ui/cards/instructor-card"
 import { ArrowRight } from "lucide-react"
-import Link from "next/link"
+import Link from 'next/link'
 
 const TopInstructors = () => {
     return (

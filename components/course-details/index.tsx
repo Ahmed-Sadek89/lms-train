@@ -1,5 +1,6 @@
 import DetailsMainHeader from './components/details-main-header'
 import Content from './components/content'
+import RelatedCourses from './components/related-courses'
 
 const CourseDetailsWrapper = () => {
     return (
@@ -8,9 +9,9 @@ const CourseDetailsWrapper = () => {
             <div className="app-container pt-[20px] border-b border-gray-50">
                 <Content />
             </div>
-            <div className="app-container">
-                <div>related courses</div>
-            </div>
+            <section className="app-container">
+                <RelatedCourses />
+            </section>
         </div>
     )
 }

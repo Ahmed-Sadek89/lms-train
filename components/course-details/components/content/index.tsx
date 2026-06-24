@@ -8,6 +8,9 @@ import ContentBenefits from './content-benefits'
 import ContentStackeholders from './content-stackholders'
 import ContentRequirements from './content-requirements'
 import ContentCurriculum from './content-curriculum'
+import ContentInstructor from './content-instructor'
+import ContentRating from './content-rating'
+import ContentComments from './content-comments'
 
 const Content = () => {
     return (
@@ -27,11 +30,13 @@ const Content = () => {
                     <ContentCurriculum />
                 </section>
                 <section id={tabs[2].value} className='space-y-[40px]'>
-                    {tabs[2].name}
+                    <ContentInstructor />
                 </section>
                 <section id={tabs[3].value} className='space-y-[40px]'>
-                    {tabs[3].name}
+                    <ContentRating />
                 </section>
+                <ContentComments />
+
             </div>
             <ContentSidebar />
         </div>
