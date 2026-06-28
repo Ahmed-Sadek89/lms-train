@@ -1,8 +1,8 @@
-import React from 'react'
+import GiftCourseWrapper from "@/components/gift-course"
 
 const CourseDetailsGiftPage = () => {
   return (
-    <div>CourseDetailsGiftPage</div>
+    <GiftCourseWrapper />
   )
 }
 

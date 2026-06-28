@@ -14,10 +14,11 @@ interface IMainBreadcrumb {
         title: string,
         href: string
     }[],
-    currentPage: string
+    currentPage: string,
+    showSlash?: boolean
 }
 
-const MainBreadcrumb = ({ links = [], currentPage }: IMainBreadcrumb) => {
+const MainBreadcrumb = ({ links = [], currentPage, showSlash = false }: IMainBreadcrumb) => {
     return (
         <Breadcrumb>
             <BreadcrumbList>
@@ -25,8 +26,14 @@ const MainBreadcrumb = ({ links = [], currentPage }: IMainBreadcrumb) => {
                     <BreadcrumbLink asChild className='text-gray-600 font-body-medium-400 transition duration-300 hover:text-gray-900'>
                         <Link href={"/"}>{"Home"}</Link>
                     </BreadcrumbLink>
+
                 </BreadcrumbItem>
-                <BreadcrumbSeparator />
+                {
+                    showSlash ?
+                        <span className='text-gray-600'>/</span>
+                        :
+                        <BreadcrumbSeparator className='text-gray-600' />
+                }
                 {
                     links?.map((breadcrumb, index) => (
                         <Fragment key={index}>
@@ -35,7 +42,12 @@ const MainBreadcrumb = ({ links = [], currentPage }: IMainBreadcrumb) => {
                                     <Link href={breadcrumb?.href || "#"}>{breadcrumb.title}</Link>
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
-                            <BreadcrumbSeparator className='text-gray-600' />
+                            {
+                                showSlash ?
+                                    <span className='text-gray-600'>/</span>
+                                    :
+                                    <BreadcrumbSeparator className='text-gray-600' />
+                            }
                         </Fragment>
                     ))
                 }
