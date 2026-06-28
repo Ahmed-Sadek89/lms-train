@@ -1,4 +1,5 @@
 import MainHeader from "../ui/main-header"
+import FormLayout from "./components/form-layout"
 import { breedcrumb } from "./utils/breadcrumb"
 
 const GiftCourseWrapper = () => {
@@ -8,7 +9,11 @@ const GiftCourseWrapper = () => {
                 title="Gift course"
                 links={breedcrumb}
             />
-            <section>form</section>
+            <section className="bg-white">
+                <div className="app container">
+                    <FormLayout />
+                </div>
+            </section>
         </>
     )
 }

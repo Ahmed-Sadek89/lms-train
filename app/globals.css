@@ -69,6 +69,9 @@
       rgba(240, 242, 245, 0) 0.02%,
       #F0F2F5 220.8%);
   --background-image-instructor-section: linear-gradient(90deg, #CC522B 0%, #FF6636 100%);
+  --background-image-input-invalid: linear-gradient(0deg, rgba(249, 234, 234, 0.5), rgba(249, 234, 234, 0.5));
+  --background-image-input-valid: linear-gradient(0deg, #FFFFFF, #FFFFFF),
+    linear-gradient(0deg, rgba(223, 242, 225, 0.5), rgba(223, 242, 225, 0.5));
 
   --shadow-button-white: 0px 6px 16px 0px #00000003;
   --shadow-topnav: inset 0px 2px 0px 0px #FF6636;
@@ -257,7 +260,7 @@
     @apply font-normal leading-3;
     font-size: 10px;
   }
- 
+
 
   .font-body-tiny-500 {
     font-weight: 500;

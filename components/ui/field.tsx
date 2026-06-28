@@ -79,7 +79,7 @@ function Field({
       role="group"
       data-slot="field"
       data-orientation={orientation}
-      className={cn(fieldVariants({ orientation }), className)}
+      className={cn("flex flex-col gap-[6px]", fieldVariants({ orientation }), className)}
       {...props}
     />
   )
@@ -106,8 +106,10 @@ function FieldLabel({
     <Label
       data-slot="field-label"
       className={cn(
+
         "group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-data-checked:border-primary/30 has-data-checked:bg-primary/5 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
+        "font-body-medium-400 text-gray-900",
         className
       )}
       {...props}
@@ -216,7 +218,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn("text-sm font-normal text-destructive", className)}
+      className={cn("text-xs font-normal text-error-500", className)}
       {...props}
     >
       {content}

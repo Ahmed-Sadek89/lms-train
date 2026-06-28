@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -23,7 +24,12 @@ export default function RootLayout({
       lang="en"
       className={`${inter.className} h-full antialiased`}
     >
-      <body className="flex flex-col min-h-full"><TooltipProvider >{children} </TooltipProvider></body>
+      <body className="flex flex-col min-h-full">
+        <TooltipProvider >
+          <Toaster />
+          {children}
+        </TooltipProvider>
+      </body>
     </html>
   );
 }
