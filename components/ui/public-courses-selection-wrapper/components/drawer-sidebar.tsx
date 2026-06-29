@@ -6,7 +6,7 @@ import {
 import { usePathname, useSearchParams } from 'next/navigation'
 import React, { useEffect } from 'react'
 
-const DrawerSidebar = ({ children, open, onOpenChange }: { children: React.ReactNode, open: boolean, onOpenChange: (open: boolean) => void }) => {
+const DrawerSidebar = ({ children, open, onOpenChange }: { children: React.ReactNode, open: boolean, onOpenChange: (_open: boolean) => void }) => {
     const pathname = usePathname()
     const searchParams = useSearchParams()
 

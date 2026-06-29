@@ -7,7 +7,7 @@ import { CheckCircle2Icon, CreditCard } from 'lucide-react'
 
 interface IUserCardsSelection {
   cardSelect: ICardSelection | null;
-  handleCardSelection: (card: ICardSelection) => void;
+  handleCardSelection: (_card: ICardSelection) => void;
 }
 
 const UserCardsSelection = ({ cardSelect, handleCardSelection }: IUserCardsSelection) => {

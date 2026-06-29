@@ -10,7 +10,7 @@ interface CheckboxInputProps<T extends FieldValues> {
     control: Control<T, object, T>,
     label?: string
     checked?: boolean
-    onChange?: (checked: boolean) => void
+    onChange?: (_checked: boolean) => void
 }
 
 const CheckboxInput = <T extends FieldValues>({

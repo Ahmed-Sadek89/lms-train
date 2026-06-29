@@ -8,7 +8,7 @@ interface CheckboxInputProps {
     name: string
     label?: string
     checked?: boolean
-    onChange?: (checked: boolean) => void
+    onChange?: (_checked: boolean) => void
 }
 
 // 'checked' prop is intentionally not omitted to avoid no-unused-vars lint error

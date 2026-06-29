@@ -18,7 +18,7 @@ type CarouselProps = {
   opts?: CarouselOptions
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
-  setApi?: (api: CarouselApi) => void
+  setApi?: (_api: CarouselApi) => void
 }
 
 type CarouselContextProps = {
@@ -60,14 +60,11 @@ function Carousel({
   )
   const [canScrollPrev, setCanScrollPrev] = React.useState(false)
   const [canScrollNext, setCanScrollNext] = React.useState(false)
-  const [initialized, setInitialized] = React.useState(false)
 
-  // Use a stable callback that does NOT receive 'api' as argument, but uses 'api' from closure
-  const onSelect = React.useCallback(() => {
-    if (!api) return
-    setCanScrollPrev(api.canScrollPrev())
-    setCanScrollNext(api.canScrollNext())
-  }, [api])
+  const onSelect = React.useCallback((emblaApi: NonNullable<typeof api>) => {
+    setCanScrollPrev(emblaApi.canScrollPrev())
+    setCanScrollNext(emblaApi.canScrollNext())
+  }, [])
 
   const scrollPrev = React.useCallback(() => {
     api?.scrollPrev()
@@ -98,24 +95,19 @@ function Carousel({
   React.useEffect(() => {
     if (!api) return
 
-    api.on("reInit", onSelect)
-    api.on("select", onSelect)
+    const handleSelect = () => onSelect(api)
 
-    setInitialized(true) // Mark as initialized to allow effect below
+    api.on("reInit", handleSelect)
+    api.on("select", handleSelect)
+
+    const frame = requestAnimationFrame(handleSelect)
 
     return () => {
-      api?.off("select", onSelect)
-      api?.off("reInit", onSelect)
+      cancelAnimationFrame(frame)
+      api.off("select", handleSelect)
+      api.off("reInit", handleSelect)
     }
   }, [api, onSelect])
-
-  // Avoid direct setState call in above effect. Use a separate effect to call onSelect after effect sync.
-  React.useEffect(() => {
-    if (!api || !initialized) return
-    onSelect()
-    // only fire after initialized, not on initial mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [api, initialized])
 
   return (
     <CarouselContext.Provider

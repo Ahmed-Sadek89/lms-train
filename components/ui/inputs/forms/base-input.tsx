@@ -13,7 +13,7 @@ interface IBaseInput<T extends FieldValues> {
     autoComplete?: string
     icon?: React.ReactNode | null
     type?: "text" | "email" | "number",
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange?: (_e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const BaseInput = <T extends FieldValues>({
