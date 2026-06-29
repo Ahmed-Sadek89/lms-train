@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+set -e
+
+echo "🔍 Linting..."
+pnpm lint
+
+echo "🏗️ Building..."
+pnpm build
+
+echo "✅ Everything passed."

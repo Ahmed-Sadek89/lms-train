@@ -5,7 +5,7 @@ import CompletePaymentBlock from "./complete-payment-block"
 
 export default function FormLayout() {
     const { form, onSubmit } = useSubmitGift()
-
+ 
     return (
         <form
             className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-x-[136px] lg:gap-y-0 gap-y-5"
