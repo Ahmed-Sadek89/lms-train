@@ -37,7 +37,7 @@ const MainHeader = ({ handleOpenFilter }: { handleOpenFilter: () => void }) => {
                         onClick={handleOpenFilter}
                     >
                         <KanbanSquare size={16} className='text-gray-900 group-hover:text-primary-500' />
-                        <span  >filter</span>
+                        <span>filter</span>
                         {
                             combinedFilters > 0 &&
                             <Badge variant={"primary-100"}>{combinedFilters}</Badge>
@@ -87,7 +87,7 @@ const MainHeader = ({ handleOpenFilter }: { handleOpenFilter: () => void }) => {
                         suggestion &&
                         <p className='font-body-medium-600 text-sm sm:text-base'>
                             <span className='text-gray-900'>3,145,684</span>
-                            <span className='text-gray-700'> results find for "{suggestion}"</span>
+                            <span className='text-gray-700'> results find for &quot;{suggestion}&quot;</span>
                         </p>
                     }
                     {

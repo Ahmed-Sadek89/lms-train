@@ -10,7 +10,7 @@ const GiftCourseWrapper = () => {
                 links={breedcrumb}
             />
             <section className="bg-white">
-                <div className="app container">
+                <div className="app-container">
                     <FormLayout />
                 </div>
             </section>

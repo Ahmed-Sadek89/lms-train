@@ -7,18 +7,23 @@ import { toast } from 'sonner'
 
 const useSubmitGift = () => {
     const form = useForm<z.infer<IFormSchema>>({
-        mode:"onBlur",
+        mode: "onBlur",
         resolver: standardSchemaResolver(formSchema),
         defaultValues: {
-            title: "",
-            description: "",
+            ReceiptName: "",
+            ReceiptEmail: "",
+            giftMessage: "",
+            cardName: "",
+            cardNumber: "",
+            cvc: "",
+            expiration: "",
+            isSaveCardInfo: false,
         },
     })
 
     function onSubmit(data: z.infer<IFormSchema>) {
-        console.log("You submitted the following values:", data)
         toast("You submitted the following values:", {
-            description: "You submitted the following values:",
+            description: "You submitted the following values:" + data.ReceiptName,
             position: "bottom-right",
             closeButton: true,
             classNames: {

@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-import DOMPurify from 'dompurify'
 import useSanitizeFromXSS from '@/hooks/use-sanitize-from-XSS'
 
 const dangerousHtmlTesting = `

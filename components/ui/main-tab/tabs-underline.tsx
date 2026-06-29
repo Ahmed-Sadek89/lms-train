@@ -9,7 +9,7 @@ const TabsUnderline = ({ tabs }: { tabs: { value: string, name: string }[] }) =>
     const pathname = usePathname()
     const hash = useMemo(() => {
         return window.location.hash.replace("#", "") || ""
-    }, [window?.location?.hash])
+    }, [])
 
     return (
         <div className='w-full z-50 overflow-auto'>

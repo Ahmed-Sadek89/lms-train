@@ -1,11 +1,10 @@
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 import { Field, FieldDescription, FieldError, FieldLabel } from '../../field'
-import { InputGroup, InputGroupTextarea } from '../../input-group'
 import { Textarea } from '../../textarea'
 import { cn } from '@/lib/utils'
 
 interface IBaseTextarea<T extends FieldValues> {
-    control: Control<T, any, T>,
+    control: Control<T, object, T>,
     name: FieldPath<T>,
     id: string,
     label?: string

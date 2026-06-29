@@ -60,12 +60,14 @@ function Carousel({
   )
   const [canScrollPrev, setCanScrollPrev] = React.useState(false)
   const [canScrollNext, setCanScrollNext] = React.useState(false)
+  const [initialized, setInitialized] = React.useState(false)
 
-  const onSelect = React.useCallback((api: CarouselApi) => {
+  // Use a stable callback that does NOT receive 'api' as argument, but uses 'api' from closure
+  const onSelect = React.useCallback(() => {
     if (!api) return
     setCanScrollPrev(api.canScrollPrev())
     setCanScrollNext(api.canScrollNext())
-  }, [])
+  }, [api])
 
   const scrollPrev = React.useCallback(() => {
     api?.scrollPrev()
@@ -95,14 +97,25 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api) return
-    onSelect(api)
+
     api.on("reInit", onSelect)
     api.on("select", onSelect)
 
+    setInitialized(true) // Mark as initialized to allow effect below
+
     return () => {
       api?.off("select", onSelect)
+      api?.off("reInit", onSelect)
     }
   }, [api, onSelect])
+
+  // Avoid direct setState call in above effect. Use a separate effect to call onSelect after effect sync.
+  React.useEffect(() => {
+    if (!api || !initialized) return
+    onSelect()
+    // only fire after initialized, not on initial mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [api, initialized])
 
   return (
     <CarouselContext.Provider

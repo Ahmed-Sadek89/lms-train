@@ -1,26 +1,31 @@
-import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
+import { Control, Controller, FieldValues, Path } from 'react-hook-form'
 import { Field, FieldError, FieldLabel } from '../../field'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '../../input-group'
 import { BadgeCheck, InfoIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface IBaseInput<T extends FieldValues> {
-    control: Control<T, any, T>,
-    name: FieldPath<T>,
+    control: Control<T, object, T>,
+    name: Path<T>,
     id: string,
     label?: string
     placeholder?: string,
     autoComplete?: string
     icon?: React.ReactNode | null
+    type?: "text" | "email" | "number",
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
+
 const BaseInput = <T extends FieldValues>({
     control,
     name,
     label = "",
     id,
     placeholder = "",
-    autoComplete = "off",
-    icon = null
+    autoComplete = "on",
+    type = "text",
+    icon = null,
+    onChange,
 }: IBaseInput<T>) => {
     return (
         <Controller
@@ -36,13 +41,19 @@ const BaseInput = <T extends FieldValues>({
                         <InputGroupInput
                             {...field}
                             id={id}
+                            type={type}
                             aria-invalid={fieldState.invalid}
                             placeholder={placeholder}
                             autoComplete={autoComplete}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                field.onChange(e);
+                                onChange?.(e);
+                            }}
+                            value={field.value}
                         />
                         {
                             icon &&
-                            <InputGroupAddon>
+                            <InputGroupAddon className='border-r border-r-gray-100 pr-2 h-full'>
                                 {icon}
                             </InputGroupAddon>
                         }
