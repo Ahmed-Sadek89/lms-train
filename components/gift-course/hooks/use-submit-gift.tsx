@@ -95,7 +95,7 @@ const useSubmitGift = () => {
                 })
                 return
             }
-            router.push("/courses/course-slug")
+            router.push(`/courses/${params.slug}`)
             toast.success("Payment completed", {
                 description: `Stripe confirmed the payment. The webhook will finalize the gift order.`,
                 position: "bottom-right",
