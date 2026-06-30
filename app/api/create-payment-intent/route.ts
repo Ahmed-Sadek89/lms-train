@@ -30,7 +30,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const course = await getDummyCourse(courseId.trim());
+    const course = getDummyCourse(courseId.trim());
 
     if (!course) {
       return NextResponse.json(
@@ -89,7 +89,7 @@ export async function POST(req: Request) {
       },
     });
 
-    await createPendingGiftOrder({
+    createPendingGiftOrder({
       course,
       recipientName: customerName,
       recipientEmail: customerEmail,

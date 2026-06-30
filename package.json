@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "json-server": "node scripts/json-server.mjs",
     "lint": "eslint",
     "prepare": "husky"
   },

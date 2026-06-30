@@ -46,35 +46,30 @@ export interface DummyTransaction {
   enrollmentId?: string;
 }
 
-const JSON_SERVER_URL = (process.env.JSON_SERVER_URL ?? "http://127.0.0.1:4000").replace(
-  /\/$/,
-  ""
-);
+const dummyCourses: DummyCourse[] = [
+  {
+    id: "course-slug",
+    title: "Graphic Design Masterclass - Learn GREAT Design",
+    instructor: "Courtney Henry",
+    amount: 75000,
+    currency: "egp",
+  },
+];
 
-async function requestJsonServer<T>(
-  path: string,
-  init?: RequestInit
-): Promise<T> {
-  const response = await fetch(`${JSON_SERVER_URL}${path}`, {
-    ...init,
-    headers: {
-      "Content-Type": "application/json",
-      ...(init?.headers ?? {}),
-    },
-  });
+const store = globalThis as typeof globalThis & {
+  __dummyGiftOrders?: Map<string, DummyGiftOrder>;
+  __dummyTransactions?: Map<string, DummyTransaction>;
+};
 
-  if (!response.ok) {
-    const message = await response.text();
-    throw new Error(
-      message || `JSON server request failed with status ${response.status}`
-    );
-  }
+const giftOrders = store.__dummyGiftOrders ?? new Map<string, DummyGiftOrder>();
+const transactions =
+  store.__dummyTransactions ?? new Map<string, DummyTransaction>();
 
-  if (response.status === 204) {
-    return undefined as T;
-  }
+store.__dummyGiftOrders = giftOrders;
+store.__dummyTransactions = transactions;
 
-  return (await response.json()) as T;
+export function getDummyCourse(courseId: string) {
+  return dummyCourses.find((course) => course.id === courseId);
 }
 
 export function formatDummyMoney(
@@ -87,13 +82,7 @@ export function formatDummyMoney(
   }).format(amount / 100);
 }
 
-export async function getDummyCourse(courseId: string) {
-  return requestJsonServer<DummyCourse | null>(`/courses/${courseId}`).catch(
-    () => null
-  );
-}
-
-export async function createPendingGiftOrder(input: {
+export function createPendingGiftOrder(input: {
   course: DummyCourse;
   recipientName: string;
   recipientEmail: string;
@@ -101,7 +90,8 @@ export async function createPendingGiftOrder(input: {
   stripePaymentIntentId: string;
 }) {
   const now = new Date().toISOString();
-  const payload: DummyGiftOrder & { updatedAt: string } = {
+
+  const order: DummyGiftOrder = {
     id: input.stripePaymentIntentId,
     courseId: input.course.id,
     courseTitle: input.course.title,
@@ -113,88 +103,76 @@ export async function createPendingGiftOrder(input: {
     currency: input.course.currency,
     status: "PENDING",
     createdAt: now,
+  };
+
+  const transaction: DummyTransaction = {
+    ...order,
+    type: "payment_intent",
     updatedAt: now,
   };
 
-  const [order] = await Promise.all([
-    requestJsonServer<DummyGiftOrder>("/giftOrders", {
-      method: "POST",
-      body: JSON.stringify(payload),
-    }),
-    requestJsonServer<DummyTransaction>("/transactions", {
-      method: "POST",
-      body: JSON.stringify({
-        ...payload,
-        type: "payment_intent",
-      }),
-    }),
-  ]);
+  giftOrders.set(order.id, order);
+  transactions.set(transaction.id, transaction);
 
   return order;
 }
 
-export async function markGiftOrderPaid(stripePaymentIntentId: string) {
-  const existing = await getGiftOrderByPaymentIntent(stripePaymentIntentId);
+export function markGiftOrderPaid(stripePaymentIntentId: string) {
+  const existing = giftOrders.get(stripePaymentIntentId);
 
   if (!existing) {
     return null;
   }
 
   const now = new Date().toISOString();
-  const updatedPayload = {
+
+  const paidOrder: DummyGiftOrder = {
     ...existing,
-    status: "PAID" as const,
+    status: "PAID",
     paidAt: now,
-    updatedAt: now,
     invoiceId: `inv_${stripePaymentIntentId}`,
     enrollmentId: `enr_${existing.courseId}_${existing.recipientEmail}`,
   };
 
-  const [order] = await Promise.all([
-    requestJsonServer<DummyGiftOrder>(`/giftOrders/${stripePaymentIntentId}`, {
-      method: "PATCH",
-      body: JSON.stringify(updatedPayload),
-    }),
-    requestJsonServer<DummyTransaction>(`/transactions/${stripePaymentIntentId}`, {
-      method: "PATCH",
-      body: JSON.stringify(updatedPayload),
-    }),
-  ]);
+  const paidTransaction: DummyTransaction = {
+    ...transactions.get(stripePaymentIntentId)!,
+    ...paidOrder,
+    updatedAt: now,
+  };
 
-  return order;
+  giftOrders.set(stripePaymentIntentId, paidOrder);
+  transactions.set(stripePaymentIntentId, paidTransaction);
+
+  return paidOrder;
 }
 
-export async function markGiftOrderFailed(stripePaymentIntentId: string) {
-  const existing = await getGiftOrderByPaymentIntent(stripePaymentIntentId);
+export function markGiftOrderFailed(stripePaymentIntentId: string) {
+  const existing = giftOrders.get(stripePaymentIntentId);
 
   if (!existing) {
     return null;
   }
 
   const now = new Date().toISOString();
-  const updatedPayload = {
+
+  const failedOrder: DummyGiftOrder = {
     ...existing,
-    status: "FAILED" as const,
+    status: "FAILED",
     failedAt: now,
+  };
+
+  const failedTransaction: DummyTransaction = {
+    ...transactions.get(stripePaymentIntentId)!,
+    ...failedOrder,
     updatedAt: now,
   };
 
-  const [order] = await Promise.all([
-    requestJsonServer<DummyGiftOrder>(`/giftOrders/${stripePaymentIntentId}`, {
-      method: "PATCH",
-      body: JSON.stringify(updatedPayload),
-    }),
-    requestJsonServer<DummyTransaction>(`/transactions/${stripePaymentIntentId}`, {
-      method: "PATCH",
-      body: JSON.stringify(updatedPayload),
-    }),
-  ]);
+  giftOrders.set(stripePaymentIntentId, failedOrder);
+  transactions.set(stripePaymentIntentId, failedTransaction);
 
-  return order;
+  return failedOrder;
 }
 
-export async function getGiftOrderByPaymentIntent(stripePaymentIntentId: string) {
-  return requestJsonServer<DummyGiftOrder | null>(
-    `/giftOrders/${stripePaymentIntentId}`
-  ).catch(() => null);
+export function getGiftOrderByPaymentIntent(stripePaymentIntentId: string) {
+  return giftOrders.get(stripePaymentIntentId) ?? null;
 }
