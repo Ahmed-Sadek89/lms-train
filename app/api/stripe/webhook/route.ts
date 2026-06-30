@@ -10,15 +10,16 @@ export async function POST(request: Request) {
   console.log("firstfirstfirstfirstfirst111111111111")
   if (!webhookSecret) {
     console.log("firstfirstfirstfirstfirst")
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Missing STRIPE_WEBHOOK_SECRET environment variable.",
-      },
-      {
-        status: 500,
-      }
-    );
+    throw new Error("no STRIPE_WEBHOOK_SECRET")
+    // return NextResponse.json(
+    //   {
+    //     success: false,
+    //     message: "Missing STRIPE_WEBHOOK_SECRET environment variable.",
+    //   },
+    //   {
+    //     status: 500,
+    //   }
+    // );
   }
 
   const body = await request.text();
