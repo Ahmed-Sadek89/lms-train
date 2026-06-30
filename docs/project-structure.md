@@ -5,7 +5,7 @@ This project is a Next.js 16 App Router application for an LMS storefront and co
 ## Top-Level Layout
 
 ```text
-lms-train/
+lms-frontend/
 ├── app/                 # Next.js App Router routes, layouts, API routes, and global CSS
 ├── components/          # Feature components, layout components, and reusable UI primitives
 ├── docs/                # Project documentation
