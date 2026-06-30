@@ -7,7 +7,9 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  console.log("firstfirstfirstfirstfirst111111111111")
   if (!webhookSecret) {
+    console.log("firstfirstfirstfirstfirst")
     return NextResponse.json(
       {
         success: false,
@@ -53,21 +55,21 @@ export async function POST(request: Request) {
 
   if (event.type === "payment_intent.succeeded") {
     const paymentIntent = event.data.object;
-    const order = markGiftOrderPaid(paymentIntent.id);
-
+    console.log("SUCCESSSSSSSSSSSSSSSSSss")
+    const order = await markGiftOrderPaid(paymentIntent.id);
     if (order) {
-      // console.info("Dummy gift finalized", {
-      //   orderId: order.id,
-      //   invoiceId: order.invoiceId,
-      //   enrollmentId: order.enrollmentId,
-      //   recipientEmail: order.recipientEmail,
-      // });
+      console.info("Dummy gift finalized", {
+        orderId: order.id,
+        invoiceId: order.invoiceId,
+        enrollmentId: order.enrollmentId,
+        recipientEmail: order.recipientEmail,
+      });
     }
   }
 
   if (event.type === "payment_intent.payment_failed") {
     const paymentIntent = event.data.object;
-    markGiftOrderFailed(paymentIntent.id);
+    await markGiftOrderFailed(paymentIntent.id);
   }
 
   return NextResponse.json({

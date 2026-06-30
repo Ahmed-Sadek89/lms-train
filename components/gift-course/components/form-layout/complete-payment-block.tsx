@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { formatDummyMoney, getDummyCourse } from "@/lib/dummy-commerce"
 import Image from "next/image"
 
 const CompletePaymentBlock = () => {
-  const course = getDummyCourse("course-slug")
-  const formattedAmount = course
-    ? formatDummyMoney(course.amount, course.currency)
-    : "EGP 0.00"
+  const courseTitle = "Graphic Design Masterclass - Learn GREAT Design"
+  const courseAuthor = "Courtney Henry"
+  const formattedAmount = "EGP 750.00"
 
   return (
     <div className='border border-gray-100 lg:sticky top-28'>
@@ -26,10 +24,10 @@ const CompletePaymentBlock = () => {
               <div className="space-y-1">
                 <p className="flex items-center gap-x-1 flex-wrap font-body-small-400">
                   <span className="text-gray-400">Course by:</span>
-                  <span className="text-gray-700">Courtney Henry</span>
+                  <span className="text-gray-700">{courseAuthor}</span>
                 </p>
                 <p className="text-gray-900 font-body-medium-400">
-                  {course?.title ?? "Course"}
+                  {courseTitle}
                 </p>
               </div>
               <span className="text-primary-400 font-body-medium-500">{formattedAmount}</span>
