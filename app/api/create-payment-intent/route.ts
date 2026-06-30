@@ -1,28 +1,28 @@
 import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
+import { createPendingGiftOrder, getDummyCourse } from "@/lib/dummy-commerce";
 
 export const runtime = "nodejs";
 
 interface CreatePaymentIntentBody {
-  amount?: unknown;
+  courseId?: unknown;
   email?: unknown;
   name?: unknown;
   giftMessage?: unknown;
   isSaveCardInfo?: unknown;
-  price?: unknown;
 }
 
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as CreatePaymentIntentBody;
 
-    const { amount, email, name, giftMessage, isSaveCardInfo, price } = body;
+    const { courseId, email, name, giftMessage, isSaveCardInfo } = body;
 
-    if (typeof amount !== "number" || !Number.isInteger(amount) || amount <= 0) {
+    if (typeof courseId !== "string" || courseId.trim().length === 0) {
       return NextResponse.json(
         {
           success: false,
-          message: "Amount must be a positive integer in the smallest currency unit.",
+          message: "Course id is required.",
         },
         {
           status: 400,
@@ -30,8 +30,24 @@ export async function POST(req: Request) {
       );
     }
 
+    const course = getDummyCourse(courseId.trim());
+
+    if (!course) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Course was not found.",
+        },
+        {
+          status: 404,
+        }
+      );
+    }
+
     const customerEmail = typeof email === "string" ? email.trim() : "";
     const customerName = typeof name === "string" ? name.trim() : "";
+    const normalizedGiftMessage =
+      typeof giftMessage === "string" ? giftMessage.trim() : "";
     const stripe = getStripe();
     let customerId: string | undefined;
 
@@ -54,8 +70,8 @@ export async function POST(req: Request) {
     }
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount,
-      currency: "egp",
+      amount: course.amount,
+      currency: course.currency,
       customer: customerId,
       automatic_payment_methods: {
         enabled: true,
@@ -65,17 +81,28 @@ export async function POST(req: Request) {
       }),
       receipt_email: customerEmail || undefined,
       metadata: {
+        courseId: course.id,
+        courseTitle: course.title,
         recipientName: customerName,
         recipientEmail: customerEmail,
-        giftMessage: typeof giftMessage === "string" ? giftMessage : "",
-        price: typeof price === "number" ? String(price) : "",
+        giftMessage: normalizedGiftMessage,
       },
+    });
+
+    createPendingGiftOrder({
+      course,
+      recipientName: customerName,
+      recipientEmail: customerEmail,
+      giftMessage: normalizedGiftMessage,
+      stripePaymentIntentId: paymentIntent.id,
     });
 
     return NextResponse.json({
       success: true,
       clientSecret: paymentIntent.client_secret,
       paymentIntentId: paymentIntent.id,
+      amount: course.amount,
+      currency: course.currency,
     });
   } catch (error) {
     return NextResponse.json(

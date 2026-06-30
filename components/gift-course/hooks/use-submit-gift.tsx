@@ -5,10 +5,12 @@ import { formSchema, IFormSchema } from '../utils/form-schema'
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema'
 import { toast } from 'sonner'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { useParams } from 'next/navigation'
 
 const useSubmitGift = () => {
     const stripe = useStripe()
     const elements = useElements()
+    const params = useParams<{ slug: string }>()
     const form = useForm<z.infer<IFormSchema>>({
         mode: "onBlur",
         resolver: standardSchemaResolver(formSchema),
@@ -18,7 +20,6 @@ const useSubmitGift = () => {
             giftMessage: "",
             cardName: "",
             isSaveCardInfo: false,
-            price: 61111, // dummy data
         },
     })
 
@@ -36,6 +37,11 @@ const useSubmitGift = () => {
                 return
             }
 
+            if (!params.slug) {
+                toast.error("Course was not found.")
+                return
+            }
+
             const fetchResponse = await fetch(
                 "/api/create-payment-intent",
                 {
@@ -44,12 +50,11 @@ const useSubmitGift = () => {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        amount: data.price,
+                        courseId: params.slug,
                         email: data.ReceiptEmail,
                         name: data.ReceiptName,
                         giftMessage: data.giftMessage,
                         isSaveCardInfo: data.isSaveCardInfo,
-                        price: data.price,
                     })
 
                 }
@@ -91,7 +96,7 @@ const useSubmitGift = () => {
             }
 
             toast.success("Payment completed", {
-                description: `Gift course payment for ${data.ReceiptName} succeeded.`,
+                description: `Stripe confirmed the payment. The webhook will finalize the gift order.`,
                 position: "bottom-right",
                 closeButton: true,
                 classNames: {

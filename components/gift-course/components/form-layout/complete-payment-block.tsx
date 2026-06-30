@@ -1,8 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
+import { formatDummyMoney, getDummyCourse } from "@/lib/dummy-commerce"
 import Image from "next/image"
 
 const CompletePaymentBlock = () => {
+  const course = getDummyCourse("course-slug")
+  const formattedAmount = course
+    ? formatDummyMoney(course.amount, course.currency)
+    : "EGP 0.00"
+
   return (
     <div className='border border-gray-100 lg:sticky top-28'>
       <div className='border-b border-b-gray-100'>
@@ -23,10 +29,10 @@ const CompletePaymentBlock = () => {
                   <span className="text-gray-700">Courtney Henry</span>
                 </p>
                 <p className="text-gray-900 font-body-medium-400">
-                  Graphic Design Masterclass - Learn GREAT Design
+                  {course?.title ?? "Course"}
                 </p>
               </div>
-              <span className="text-primary-400 font-body-medium-500">$12.00</span>
+              <span className="text-primary-400 font-body-medium-500">{formattedAmount}</span>
             </div>
           </div>
         </div>
@@ -36,16 +42,16 @@ const CompletePaymentBlock = () => {
           <h2 className="text-gray-900 font-body-xl-500">Order Summery</h2>
           <div className="flex items-center flex-wrap justify-between">
             <p className="text-gray-600 font-body-medium-400">Subtotal</p>
-            <p className="text-gray-900 font-body-medium-500">$61.97 USD</p>
+            <p className="text-gray-900 font-body-medium-500">{formattedAmount}</p>
           </div>
           <div className="flex items-center flex-wrap justify-between">
             <p className="text-gray-600 font-body-medium-400">Coupon Discount</p>
-            <p className="text-gray-900 font-body-medium-500">8%</p>
+            <p className="text-gray-900 font-body-medium-500">0%</p>
           </div>
           <Separator className="bg-gray-100" />
           <div className="flex items-center flex-wrap justify-between">
             <p className="text-gray-900 font-body-large-400">Total:</p>
-            <p className="text-gray-900 font-heading-4">$75.00 USD</p>
+            <p className="text-gray-900 font-heading-4">{formattedAmount}</p>
           </div>
         </div>
         <Button type="submit" size={"lg"}>

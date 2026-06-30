@@ -22,7 +22,6 @@ export const formSchema = z.object({
     // isSaveCardInfo: z.boolean().refine(val => val === true, {
     //     message: "You must accept this",
     // }),
-    price: z.number()
 })
 
 export type IFormSchema = typeof formSchema
