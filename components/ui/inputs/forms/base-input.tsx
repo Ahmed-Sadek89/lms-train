@@ -14,6 +14,7 @@ interface IBaseInput<T extends FieldValues> {
     icon?: React.ReactNode | null
     type?: "text" | "email" | "number",
     onChange?: (_e: React.ChangeEvent<HTMLInputElement>) => void
+    disabled?: boolean
 }
 
 const BaseInput = <T extends FieldValues>({
@@ -25,6 +26,7 @@ const BaseInput = <T extends FieldValues>({
     autoComplete = "on",
     type = "text",
     icon = null,
+    disabled = false,
     onChange,
 }: IBaseInput<T>) => {
     return (
@@ -42,6 +44,7 @@ const BaseInput = <T extends FieldValues>({
                             {...field}
                             id={id}
                             type={type}
+                            disabled={disabled}
                             aria-invalid={fieldState.invalid}
                             placeholder={placeholder}
                             autoComplete={autoComplete}

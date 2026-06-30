@@ -7,8 +7,10 @@ import { CardElement } from "@stripe/react-stripe-js"
 
 interface IInputs<T extends FieldValues> {
     form: UseFormReturn<T, object, T>,
+    isSubmitting: boolean
+    handleIsInvalid: (value: boolean) => void
 }
-const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
+const Inputs = <T extends FieldValues>({ form, isSubmitting, handleIsInvalid }: IInputs<T>) => {
     const { control } = form;
 
     return (
@@ -24,6 +26,7 @@ const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
                             name={"ReceiptName" as Path<T>}
                             label="Receipt name"
                             placeholder="ex:john doe"
+                            disabled={isSubmitting}
                         />
                         <BaseInput
                             control={control}
@@ -31,6 +34,7 @@ const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
                             name={"ReceiptEmail" as Path<T>}
                             label="Receipt email"
                             placeholder="ex:john-doe12@example.com"
+                            disabled={isSubmitting}
                         />
                         <BaseTextarea
                             control={control}
@@ -39,6 +43,7 @@ const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
                             label="Gift message"
                             placeholder="Add your personal message here... "
                             rows={3}
+                            disabled={isSubmitting}
                         />
                     </FieldGroup>
                 </div>
@@ -53,6 +58,7 @@ const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
                             name={"cardName" as Path<T>}
                             label="Name"
                             placeholder="ex:Ahmed Mohamed Ahmed"
+                            disabled={isSubmitting}
                         />
                         <div className="flex flex-col gap-y-2">
                             <label className="font-body-small-400 text-gray-900" htmlFor="card-element">
@@ -64,6 +70,7 @@ const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
                             >
                                 <CardElement
                                     options={{
+                                        disabled: isSubmitting,
                                         hidePostalCode: true,
                                         style: {
                                             base: {
@@ -79,13 +86,20 @@ const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
                                             },
                                         },
                                     }}
+                                    onChange={e => {
+                                        const invalid = !!e.error || !e.complete;
+                                        handleIsInvalid(invalid);
+                                    }}
                                 />
+                 
+
                             </div>
                         </div>
                         <CheckboxInput
                             control={control}
                             id="isSaveCardInfo"
                             name={"isSaveCardInfo" as Path<T>}
+                            disabled={isSubmitting}
                             label="Remember this card, save it on my card list"
                         />
                     </FieldGroup>

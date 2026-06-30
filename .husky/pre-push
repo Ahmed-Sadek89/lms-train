@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
-# set -e
+set -e
 
-# echo "🔍 Linting..."
-# pnpm lint
+echo "🔍 Linting..."
+pnpm lint
 
-# echo "🏗️ Building..."
-# pnpm build
+echo "🏗️ Building..."
+pnpm build
 
-# echo "✅ Everything passed."
+echo "✅ Everything passed."

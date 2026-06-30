@@ -11,6 +11,7 @@ interface CheckboxInputProps<T extends FieldValues> {
     label?: string
     checked?: boolean
     onChange?: (_checked: boolean) => void
+    disabled?: boolean
 }
 
 const CheckboxInput = <T extends FieldValues>({
@@ -20,6 +21,7 @@ const CheckboxInput = <T extends FieldValues>({
     label = '',
     checked,
     onChange,
+    disabled = false
 }: CheckboxInputProps<T>) => {
     return (
         <Controller
@@ -30,6 +32,7 @@ const CheckboxInput = <T extends FieldValues>({
                     <Field data-invalid={fieldState.invalid} orientation="horizontal">
                         <Checkbox
                             id={id}
+                            disabled={disabled}
                             name={name}
                             checked={typeof checked !== "undefined" ? checked : field.value}
                             onCheckedChange={(value) => {

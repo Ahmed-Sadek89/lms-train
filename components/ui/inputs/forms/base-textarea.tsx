@@ -11,6 +11,7 @@ interface IBaseTextarea<T extends FieldValues> {
     placeholder?: string,
     rows?: number
     fieldDescription?: string
+    disabled?: boolean
 }
 const BaseTextarea = <T extends FieldValues>({
     control,
@@ -20,6 +21,7 @@ const BaseTextarea = <T extends FieldValues>({
     placeholder = "",
     rows = 6,
     fieldDescription = "",
+    disabled = false
 }: IBaseTextarea<T>) => {
     return (
         <Controller
@@ -27,13 +29,14 @@ const BaseTextarea = <T extends FieldValues>({
             control={control}
             render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor={id} 
-                    className={cn(!fieldState.invalid?"text-gray-900":"text-error-500")}>
+                    <FieldLabel htmlFor={id}
+                        className={cn(!fieldState.invalid ? "text-gray-900" : "text-error-500")}>
                         {label}
                     </FieldLabel>
                     <Textarea
                         {...field}
                         id={id}
+                        disabled={disabled}
                         placeholder={placeholder}
                         rows={rows}
                         aria-invalid={fieldState.invalid}

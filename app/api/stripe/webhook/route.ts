@@ -7,19 +7,16 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-  console.log("firstfirstfirstfirstfirst111111111111")
   if (!webhookSecret) {
-    console.log("firstfirstfirstfirstfirst")
-    throw new Error("no STRIPE_WEBHOOK_SECRET")
-    // return NextResponse.json(
-    //   {
-    //     success: false,
-    //     message: "Missing STRIPE_WEBHOOK_SECRET environment variable.",
-    //   },
-    //   {
-    //     status: 500,
-    //   }
-    // );
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Missing STRIPE_WEBHOOK_SECRET environment variable.",
+      },
+      {
+        status: 500,
+      }
+    );
   }
 
   const body = await request.text();
@@ -56,15 +53,14 @@ export async function POST(request: Request) {
 
   if (event.type === "payment_intent.succeeded") {
     const paymentIntent = event.data.object;
-    console.log("SUCCESSSSSSSSSSSSSSSSSss")
     const order = await markGiftOrderPaid(paymentIntent.id);
     if (order) {
-      console.info("Dummy gift finalized", {
-        orderId: order.id,
-        invoiceId: order.invoiceId,
-        enrollmentId: order.enrollmentId,
-        recipientEmail: order.recipientEmail,
-      });
+      // console.info("Dummy gift finalized", {
+      //   orderId: order.id,
+      //   invoiceId: order.invoiceId,
+      //   enrollmentId: order.enrollmentId,
+      //   recipientEmail: order.recipientEmail,
+      // });
     }
   }
 

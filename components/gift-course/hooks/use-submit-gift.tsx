@@ -5,11 +5,12 @@ import { formSchema, IFormSchema } from '../utils/form-schema'
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema'
 import { toast } from 'sonner'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
 const useSubmitGift = () => {
     const stripe = useStripe()
     const elements = useElements()
+    const router = useRouter()
     const params = useParams<{ slug: string }>()
     const form = useForm<z.infer<IFormSchema>>({
         mode: "onBlur",
@@ -94,7 +95,7 @@ const useSubmitGift = () => {
                 })
                 return
             }
-
+            router.push("/courses/course-slug")
             toast.success("Payment completed", {
                 description: `Stripe confirmed the payment. The webhook will finalize the gift order.`,
                 position: "bottom-right",

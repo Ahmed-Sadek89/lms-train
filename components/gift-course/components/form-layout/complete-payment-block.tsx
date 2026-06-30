@@ -1,8 +1,15 @@
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
+import { Spinner } from "@/components/ui/spinner"
+import { LucideCreditCard } from "lucide-react"
 import Image from "next/image"
 
-const CompletePaymentBlock = () => {
+interface CompletePaymentBlockProps {
+  isSubmitting?: boolean
+  cardInvalid: boolean
+}
+
+const CompletePaymentBlock = ({ isSubmitting = false, cardInvalid }: CompletePaymentBlockProps) => {
   const courseTitle = "Graphic Design Masterclass - Learn GREAT Design"
   const courseAuthor = "Courtney Henry"
   const formattedAmount = "EGP 750.00"
@@ -52,8 +59,12 @@ const CompletePaymentBlock = () => {
             <p className="text-gray-900 font-heading-4">{formattedAmount}</p>
           </div>
         </div>
-        <Button type="submit" size={"lg"}>
-          Complete payment
+        <Button type="submit" size={"lg"} disabled={cardInvalid || isSubmitting}>
+          {isSubmitting ?
+            <>
+              <Spinner /> Processing...
+            </>
+            : <><LucideCreditCard /> Complete payment</>}
         </Button>
       </div>
     </div>
