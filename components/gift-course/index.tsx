@@ -5,7 +5,7 @@ import { breedcrumb } from "./utils/breadcrumb"
 const GiftCourseWrapper = () => {
     return (
         <>
-            <MainHeader 
+            <MainHeader
                 title="Gift course"
                 links={breedcrumb}
             />

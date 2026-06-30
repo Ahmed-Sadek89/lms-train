@@ -1,33 +1,15 @@
 import { FieldGroup } from "@/components/ui/field"
 import BaseInput from "@/components/ui/inputs/forms/base-input"
 import BaseTextarea from "@/components/ui/inputs/forms/base-textarea"
-import CardExpirationInput from "@/components/ui/inputs/forms/card-expiration-input"
-import CardNumberInput from "@/components/ui/inputs/forms/card-number-input"
 import { FieldValues, Path, UseFormReturn } from "react-hook-form"
-import UserCardsSelection from "./user-cards-selection"
-import { useCallback, useState } from "react"
-import { ICardSelection } from "@/types/payment"
 import CheckboxInput from "@/components/ui/inputs/forms/checkbox-input"
+import { CardElement } from "@stripe/react-stripe-js"
 
 interface IInputs<T extends FieldValues> {
     form: UseFormReturn<T, object, T>,
 }
 const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
-    const { control, setValue } = form;
-    const [cardSelect, setCardSelect] = useState<ICardSelection>({
-        id: "",
-        cardName: "",
-        cardNumber: "",
-        CVC: "",
-        expiration: ""
-    })
-    const handleCardSelection = useCallback((payload: ICardSelection) => {
-        setCardSelect(payload)
-        setValue("cardNumber" as Path<T>, payload?.cardNumber as T[Path<T>])
-        setValue("cardName" as Path<T>, payload?.cardName as T[Path<T>])
-        setValue("cvc" as Path<T>, payload?.CVC as T[Path<T>])
-        setValue("expiration" as Path<T>, payload?.expiration as T[Path<T>])
-    }, [setValue])
+    const { control } = form;
 
     return (
         <div className='flex flex-col gap-y-[40px] text-gray-900'>
@@ -63,10 +45,6 @@ const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
             </div>
             <div className="flex flex-col gap-y-[24px]">
                 <h4 className="font-body-xl-500">Payment Method</h4>
-                <UserCardsSelection
-                    cardSelect={cardSelect}
-                    handleCardSelection={handleCardSelection}
-                />
                 <div className="flex flex-col gap-y-[18px]">
                     <FieldGroup>
                         <BaseInput
@@ -76,32 +54,33 @@ const Inputs = <T extends FieldValues>({ form }: IInputs<T>) => {
                             label="Name"
                             placeholder="ex:Ahmed Mohamed Ahmed"
                         />
-                        <CardNumberInput
-                            control={control}
-                            id="cardNumber"
-                            name={"cardNumber" as Path<T>}
-                            label="Card Number"
-                            placeholder="**** **** **** ****"
-                        />
-                        <div className="grid grid-cols-1 sm:grid-cols-2 items-start gap-2">
-                            <CardExpirationInput
-                                control={control}
-                                id="expiration"
-                                name={"expiration" as Path<T>}
-                                label="Expiration date"
-                                placeholder="ex:01/31"
-                            />
-                            <BaseInput
-                                control={control}
-                                id="cvc"
-                                name={"cvc" as Path<T>}
-                                label="CVC"
-                                placeholder="ex:123"
-                                onChange={e => {
-                                    const rawValue = e.target.value.replace(/\D/g, '').slice(0, 3)
-                                    setValue("cvc" as Path<T>, rawValue as T[Path<T>]);
-                                }}
-                            />
+                        <div className="flex flex-col gap-y-2">
+                            <label className="font-body-small-400 text-gray-900" htmlFor="card-element">
+                                Card details
+                            </label>
+                            <div
+                                id="card-element"
+                                className="min-h-11 rounded-md border border-gray-100 bg-white px-3 py-3"
+                            >
+                                <CardElement
+                                    options={{
+                                        hidePostalCode: true,
+                                        style: {
+                                            base: {
+                                                color: "#1d2026",
+                                                fontFamily: "inherit",
+                                                fontSize: "16px",
+                                                "::placeholder": {
+                                                    color: "#8c94a3",
+                                                },
+                                            },
+                                            invalid: {
+                                                color: "#dc2626",
+                                            },
+                                        },
+                                    }}
+                                />
+                            </div>
                         </div>
                         <CheckboxInput
                             control={control}

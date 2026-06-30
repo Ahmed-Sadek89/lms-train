@@ -1,0 +1,3 @@
+5555 5555 5555 4444 => master success
+4242 4242 4242 4242 => visa success 
+4000 0000 0000 9987 => visa failed
